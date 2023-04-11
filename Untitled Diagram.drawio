@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-11T16:46:22.962Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="TMs9MAp9wAyhxtUnbivA" version="21.1.5" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-04-11T16:49:42.734Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="AQ4qVnMbZtxikqZ13Soe" version="21.1.5" type="github" pages="2">
   <diagram name="Back End" id="9f46799a-70d6-7492-0946-bef42562c5a5">
     <mxGraphModel dx="954" dy="682" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
@@ -822,6 +822,120 @@
         </mxCell>
         <mxCell id="ts6-NQOaHxjzsZAm-oKy-13" value="created by Username(image)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="2390" y="1710" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-14" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2085.0000000000005" y="3030" as="sourcePoint" />
+            <mxPoint x="2085" y="3018.57" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-15" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2085" y="3018.57" as="sourcePoint" />
+            <mxPoint x="2084.9999999999986" y="3030" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-16" value="" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1720" y="2260" width="760" height="760" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-47" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="ts6-NQOaHxjzsZAm-oKy-17" target="ts6-NQOaHxjzsZAm-oKy-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-17" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2280" width="690" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-18" value="&lt;b&gt;&lt;i&gt;&lt;font style=&quot;font-size: 17px;&quot;&gt;Title&lt;/font&gt;&lt;/i&gt;&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="2050" y="2290" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-19" value="Home&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1850" y="2330" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-20" value="Home&amp;nbsp; &amp;nbsp; &amp;nbsp; About&amp;nbsp; &amp;nbsp; Posts&amp;nbsp; &amp;nbsp; My Commented Posts&amp;nbsp; &amp;nbsp;Categories&amp;nbsp; &amp;nbsp;Logout User (image)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1790" y="2330" width="640" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-21" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2390" width="690" height="620" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-22" value="go by other users information possibly" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#b85450;fillColor=#f8cecc;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1990" y="2220" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-23" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2105.0000000000005" y="3010" as="sourcePoint" />
+            <mxPoint x="2105" y="2998.57" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-24" value="&lt;span style=&quot;font-size: 21px;&quot;&gt;&lt;b&gt;&lt;i&gt;Users&lt;/i&gt;&lt;/b&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2450" width="575" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-25" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2390" width="690" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-26" value="Filter Bar" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="2055" y="2390" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-27" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2410" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-28" value="Filter By Catagory" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2410" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-29" value="Search by category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="2210" y="2410" width="165" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-30" value="Clear Filters" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="2375" y="2410" width="75" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-31" value="Filter by name a-z z-a..., most comments......" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1960" y="2410" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-32" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2105" y="2998.57" as="sourcePoint" />
+            <mxPoint x="2104.9999999999986" y="3010" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-33" value="Create a new Post" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="2330" y="2450" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-34" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2490" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-35" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2810" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-36" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2850" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-37" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2890" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-38" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2930" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-39" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2970" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-40" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2570" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-41" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2610" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-42" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2650" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-43" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2690" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-44" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2730" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-45" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2770" width="690" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ts6-NQOaHxjzsZAm-oKy-46" value="Category as clickable link to page of posts&amp;nbsp; with category filter to that category" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;shadow=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="1760" y="2530" width="690" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
