@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-11T11:36:06.996Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="N8Q30IQXurc9R0Uk8znX" version="21.1.5" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-04-11T11:38:16.497Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="8vpQj-bPA2eiyV2LGzV5" version="21.1.5" type="github" pages="2">
   <diagram name="Back End" id="9f46799a-70d6-7492-0946-bef42562c5a5">
     <mxGraphModel dx="1004" dy="718" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
@@ -78,8 +78,13 @@
         <mxCell id="840bowjbzDEZUcGG1Qwe-82" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;validates :score, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=7;" vertex="1" parent="78961159f06e98e8-43">
           <mxGeometry y="176" width="160" height="74" as="geometry" />
         </mxCell>
+        <mxCell id="840bowjbzDEZUcGG1Qwe-91" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.843;entryY=-0.006;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="78961159f06e98e8-69" target="78961159f06e98e8-17">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="683" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="78961159f06e98e8-69" value="Comments" style="swimlane;html=1;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=#ffffff;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12" parent="1" vertex="1">
-          <mxGeometry x="560" y="70" width="160" height="370" as="geometry" />
+          <mxGeometry x="570" y="78" width="160" height="370" as="geometry" />
         </mxCell>
         <mxCell id="78961159f06e98e8-70" value="body: text" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="78961159f06e98e8-69" vertex="1">
           <mxGeometry y="26" width="160" height="26" as="geometry" />
@@ -157,6 +162,22 @@
         </mxCell>
         <mxCell id="840bowjbzDEZUcGG1Qwe-83" value="class Category &lt; ApplicationRecord&#xa;  has_and_belongs_to_many :posts&#xa;&#xa;  validates :name, presence: true, uniqueness: true&#xa;end" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="1560" y="78" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="840bowjbzDEZUcGG1Qwe-85" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="840bowjbzDEZUcGG1Qwe-50" target="78961159f06e98e8-17">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="480" as="sourcePoint" />
+            <mxPoint x="425" y="460" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="480" />
+              <mxPoint x="520" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="840bowjbzDEZUcGG1Qwe-87" value="" style="edgeStyle=segmentEdgeStyle;endArrow=classic;html=1;curved=0;rounded=0;endSize=8;startSize=8;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=-0.002;exitY=0.142;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="840bowjbzDEZUcGG1Qwe-32" target="840bowjbzDEZUcGG1Qwe-73">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="495" y="310" as="sourcePoint" />
+            <mxPoint x="545" y="260" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
