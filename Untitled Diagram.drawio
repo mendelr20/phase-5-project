@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-11T16:49:42.734Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="AQ4qVnMbZtxikqZ13Soe" version="21.1.5" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-04-11T17:11:37.211Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="powOZf-TXy1wc0Aaa59N" version="21.1.5" type="github" pages="2">
   <diagram name="Back End" id="9f46799a-70d6-7492-0946-bef42562c5a5">
     <mxGraphModel dx="954" dy="682" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
@@ -170,7 +170,7 @@
         <mxCell id="840bowjbzDEZUcGG1Qwe-54" value="" style="line;html=1;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;swimlaneLine=1;shadow=1;" vertex="1" parent="840bowjbzDEZUcGG1Qwe-50">
           <mxGeometry y="104" width="160" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="840bowjbzDEZUcGG1Qwe-55" value="belongs_to: user, through: :comments" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;swimlaneLine=1;shadow=1;" vertex="1" parent="840bowjbzDEZUcGG1Qwe-50">
+        <mxCell id="840bowjbzDEZUcGG1Qwe-55" value="&lt;span style=&quot;background-color: rgb(255, 255, 153);&quot;&gt;belongs_to: user, through: :comments&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;swimlaneLine=1;shadow=1;" vertex="1" parent="840bowjbzDEZUcGG1Qwe-50">
           <mxGeometry y="112" width="160" height="38" as="geometry" />
         </mxCell>
         <mxCell id="840bowjbzDEZUcGG1Qwe-73" value="has_many :comments, dependent: :destroy" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;swimlaneLine=1;shadow=1;" vertex="1" parent="840bowjbzDEZUcGG1Qwe-50">
