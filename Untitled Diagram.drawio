@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-11T13:49:25.846Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="LCbzqCtDYeU7v-fval6m" version="21.1.5" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2023-04-11T13:52:54.649Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="QfvD3Dt4ds8vCuE3ja6I" version="21.1.5" type="github">
   <diagram name="Back End" id="9f46799a-70d6-7492-0946-bef42562c5a5">
     <mxGraphModel dx="909" dy="650" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
@@ -200,37 +200,8 @@
         <mxCell id="840bowjbzDEZUcGG1Qwe-106" value="class CategoryPost &lt; ApplicationRecord&#xa;  belongs_to :category&#xa;  belongs_to :post&#xa;&#xa;  validates :category_id, presence: true&#xa;  validates :post_id, presence: true&#xa;end" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;shadow=1;" vertex="1" parent="1">
           <mxGeometry x="1120" y="720" width="250" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="840bowjbzDEZUcGG1Qwe-108" value="Include a many to many relationship.&lt;br&gt;&lt;span style=&quot;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;between posts and categories, though category_posts&lt;br&gt;Implement a minimum of 4 models.&lt;br&gt;&lt;span style=&quot;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;users, posts, comments,&amp;nbsp;Categories,&amp;nbsp;category_posts&lt;br&gt;Implement a minimum of 5 client side routes using React router.&lt;br&gt;&lt;span style=&quot;&quot;&gt;	&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;	&lt;/span&gt;Home, About, Posts, My Posts, My Comments, Ca&lt;br&gt;Implement password protection and authentication.&lt;br&gt;Include full CRUD on at least 1 model, following REST conventions.&lt;br&gt;Implement validations and error handling.&lt;br&gt;Implement something new not taught in the curriculum. (Check in with your instructor to ensure the scope of your idea is appropriate.)&lt;br&gt;Implement useContext or Redux.&lt;br&gt;Fully deploy and host your project." style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;shadow=1;" vertex="1" parent="1">
-          <mxGeometry x="1150" y="1000" width="560" height="220" as="geometry" />
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
-  <diagram id="B8aguBRAt4Zf9ztLvqEu" name="Front End">
-    <mxGraphModel dx="954" dy="648" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="SVsRbN3KfIee-e9rEWyM-1" value="5 Client Side Routes" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="40" width="140" height="182" as="geometry" />
-        </mxCell>
-        <mxCell id="SVsRbN3KfIee-e9rEWyM-2" value="My Appointments" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="SVsRbN3KfIee-e9rEWyM-1">
-          <mxGeometry y="26" width="140" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="SVsRbN3KfIee-e9rEWyM-3" value="New Appointment" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="SVsRbN3KfIee-e9rEWyM-1">
-          <mxGeometry y="52" width="140" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="SVsRbN3KfIee-e9rEWyM-4" value="Doctors" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="SVsRbN3KfIee-e9rEWyM-1">
-          <mxGeometry y="78" width="140" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="SVsRbN3KfIee-e9rEWyM-6" value="Specialties" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="SVsRbN3KfIee-e9rEWyM-1">
-          <mxGeometry y="104" width="140" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="wtIE97hacBbmuzUlWnHP-4" value="Home" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="SVsRbN3KfIee-e9rEWyM-1">
-          <mxGeometry y="130" width="140" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="wtIE97hacBbmuzUlWnHP-5" value="About" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="SVsRbN3KfIee-e9rEWyM-1">
-          <mxGeometry y="156" width="140" height="26" as="geometry" />
+        <mxCell id="840bowjbzDEZUcGG1Qwe-108" value="&lt;ul&gt;&lt;li&gt;Include a many to many relationship.&lt;/li&gt;&lt;ul&gt;&lt;li&gt;between posts and categories, though category_posts&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Implement a minimum of 4 models.&lt;/li&gt;&lt;ul&gt;&lt;li&gt;users, posts, comments,&amp;nbsp;Categories,&amp;nbsp;category_posts&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Implement a minimum of 5 client side routes using React router.&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Home, About, Posts, My Posts, My Comments, Categories&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Implement password protection and authentication.&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Bcrypt, has_secure_password&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Include full CRUD on at least 1 model, following REST conventions.&lt;/li&gt;&lt;ul&gt;&lt;li&gt;&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Implement validations and error handling.&lt;/li&gt;&lt;ul&gt;&lt;li&gt;i have validations and i will implement error handling for them&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Implement something new not taught in the curriculum. (Check in with your instructor to ensure the scope of your idea is appropriate.)&lt;/li&gt;&lt;ul&gt;&lt;li&gt;what can i do&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Implement useContext or Redux.&lt;/li&gt;&lt;ul&gt;&lt;li&gt;will use for the user state&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Fully deploy and host your project.&lt;/li&gt;&lt;ul&gt;&lt;li&gt;will do&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;" style="text;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="950" width="560" height="320" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
