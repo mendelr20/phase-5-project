@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
-  # before_action :set_active_storage_host
+  before_action :authorize
   
-  # def set_active_storage_host
-  #   ActiveStorage::Current.host = 'http://localhost:3000' if ActiveStorage::Current.host.blank?
-  #   true
-  # end
+  private
+  def authorize
+    return render json: {errors: ["Not authorized"]}, status: :unauthorized unless session.include? :user_id
+  end
 end
