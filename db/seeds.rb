@@ -3,6 +3,8 @@ require 'faker'
 # Create 10 users with random data
 puts "👥 Creating users..."
 10.times do
+    avatar_url = Faker::Avatar.image(slug: Faker::Internet.unique.slug, size: '300x300', format: 'png')
+    downloaded_image = URI.open(avatar_url)
     user = User.create!(
       username: Faker::Internet.unique.username,
       email: Faker::Internet.unique.email,
@@ -11,7 +13,9 @@ puts "👥 Creating users..."
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
     )
-    user.profile_pic.attach(io: File.open('/Users/mendelrosenblum/Development/Code/Projects/phase-5-project/Dr.jpeg'), filename: 'Dr.jpeg')
+    user.profile_pic.attach(io: downloaded_image, filename: 'avatar.png')
+    # (io: File.open('/Users/mendelrosenblum/Development/Code/Projects/phase-5-project/Dr.jpeg'), filename: 'Dr.jpeg')
+    
 end
 puts "✅ Users created!\n"
 
