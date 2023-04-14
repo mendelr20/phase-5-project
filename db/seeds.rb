@@ -3,14 +3,15 @@ require 'faker'
 # Create 10 users with random data
 puts "👥 Creating users..."
 10.times do
-  User.create!(
-    username: Faker::Internet.unique.username,
-    email: Faker::Internet.unique.email,
-    password: 'P@ssw0rd123',
-    password_confirmation: 'P@ssw0rd123',
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-  )
+    user = User.create!(
+      username: Faker::Internet.unique.username,
+      email: Faker::Internet.unique.email,
+      password: 'Password123@$',
+      password_confirmation: 'Password123@$',
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+    )
+    user.profile_pic.attach(io: File.open('/Users/mendelrosenblum/Development/Code/Projects/phase-5-project/Dr.jpeg'), filename: 'Dr.jpeg')
 end
 puts "✅ Users created!\n"
 

@@ -1,10 +1,11 @@
 class User < ApplicationRecord
+    ActiveStorage::Current.host = "http://localhost:3000"
     has_many :created_posts, class_name: 'Post', dependent: :destroy
     has_many :comments, dependent: :destroy
     has_many :commented_posts, through: :comments, source: :post
   
     has_secure_password
-    has_one_attached :user_picture
+    has_one_attached :profile_pic
   
     validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }

@@ -19,6 +19,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Faker Gem
 gem 'faker'
 
+# Mini Gem
+gem 'mini_magick'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
