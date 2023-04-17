@@ -7,9 +7,9 @@ class User < ApplicationRecord
     has_secure_password
     has_one_attached :profile_pic
   
-    # validates :username, presence: true, uniqueness: true
+    validates :username, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-    # validates :password, presence: true, length: { minimum: 8 }, format: { with: /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[[:^alnum:]])\z/x, message: "must include at least one lowercase letter, one uppercase letter, one digit, and one special character" }
+    validates :password, presence: true, length: { minimum: 8 }, format: { with: /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[[:^alnum:]])/x, message: "must contain at least one uppercase letter, one lowercase letter, one digit, and one special character." }
     validates :first_name, presence: true
     validates :last_name, presence: true
 

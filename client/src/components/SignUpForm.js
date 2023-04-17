@@ -30,6 +30,7 @@ function SignUpForm() {
     formData.append('last_name', lastName);
     formData.append('email', email);
     formData.append('profile_pic', profilePic);
+   
   
     fetch("/signup", {
       method: "POST",
@@ -52,6 +53,7 @@ function SignUpForm() {
       });
   }
   
+  console.log(username)
   function handleProfilePicChange(e) {
     setProfilePic(e.target.files[0]);
   }
