@@ -40,10 +40,10 @@ function NavBar() {
         </Button>
         {user ? (
           <>
-            {/* <Button as={Link} to="/myrecipes">
-              My Reviewed Recipes 
+            <Button as={Link} to="/posts">
+              Posts
             </Button>
-            <Button variant="outline" as={Link} to="/recipes">
+            {/* <Button variant="outline" as={Link} to="/recipes">
               Recipes
             </Button>
             <Button as={Link} to="/new">
