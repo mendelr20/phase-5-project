@@ -12,4 +12,8 @@ class User < ApplicationRecord
     # validates :password, presence: true, length: { minimum: 8 }, format: { with: /\A(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[[:^alnum:]])\z/x, message: "must include at least one lowercase letter, one uppercase letter, one digit, and one special character" }
     validates :first_name, presence: true
     validates :last_name, presence: true
+
+    def profile_pic_url
+        Rails.application.routes.url_helpers.rails_blob_url(profile_pic, only_path: true) if profile_pic.attached?
+    end
 end

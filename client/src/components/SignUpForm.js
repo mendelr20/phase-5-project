@@ -22,37 +22,36 @@ function SignUpForm() {
     setErrors([]);
     setIsLoading(true);
   
-  
-    const userData = {
-      username,
-      password,
-      password_confirmation: passwordConfirmation,
-      first_name: firstName,
-      last_name: lastName,
-      email,
-      profile_pic: profilePic
-    };
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+    formData.append('password_confirmation', passwordConfirmation);
+    formData.append('first_name', firstName);
+    formData.append('last_name', lastName);
+    formData.append('email', email);
+    formData.append('profile_pic', profilePic);
   
     fetch("/signup", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Accept": "application/json"
       },
-      body: JSON.stringify({ user: userData })
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => {
-          setUser(user);
-          // Redirect to the home page
-          navigate("/posts");
-        });
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
+      body: formData
+    })
+      .then((r) => {
+        setIsLoading(false);
+        if (r.ok) {
+          r.json().then((user) => {
+            setUser(user);
+            // Redirect to the home page
+            navigate("/posts");
+          });
+        } else {
+          r.json().then((err) => setErrors(err.errors));
+        }
+      });
   }
-
+  
   function handleProfilePicChange(e) {
     setProfilePic(e.target.files[0]);
   }
