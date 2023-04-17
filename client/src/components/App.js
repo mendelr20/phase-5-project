@@ -21,6 +21,7 @@ function App() {
   const [posts, setPosts] = useState([]);
   console.log(posts)
   console.log(user)
+  
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {

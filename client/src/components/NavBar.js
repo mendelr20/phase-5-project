@@ -28,10 +28,18 @@ function NavBar() {
 
   return (
     <Wrapper>
+  
       <Logo>
         <Link to="/">TraumaTalks</Link>
       </Logo>
+      {user ? (
+  <Profile>
+    <img src={user.profile_pic_url} alt={user.username} />
+    <p>{user.first_name} {user.last_name}</p>
+  </Profile>
+) : null}
       <Nav>
+      
         <Button as={Link} to="/">
           Home
         </Button>
@@ -89,5 +97,26 @@ const Nav = styled.nav`
   gap: 4px;
   margin-top: 16px;
 `;
+
+const Profile = styled.div`
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
+  p {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+`;
+
+
+
 
 export default NavBar;
