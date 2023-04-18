@@ -7,9 +7,6 @@ import Login from "./Login";
 
 function HomePage() {
   const { user, setUser, showLoginForm, setShowLoginForm } = useContext(UserContext);
-  
-
-  // const featuredRecipes = recipes.length > 0 ? recipes.slice(0, 4) : [];  // display the first 4 recipes as featured recipes
 
   return (
     <Wrapper>

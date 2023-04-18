@@ -1,19 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { Box } from "../styles";
+import PostsList from "./PostsList";
 
-function PostsPage() {
+function Posts() {
   return (
     <Wrapper>
       <BoxShadow>
         <Title>Posts</Title>
         <ContentWrapper>
           <Description>
-            Posts are Coming Soon
+            <PostsList/>
           </Description>
-          {/* <Button as={Link} to="/recipes">
-            See Recipe List
-          </Button> */}
         </ContentWrapper>
       </BoxShadow>
     </Wrapper>
@@ -56,4 +54,4 @@ const Description = styled.p`
   color: #333;
 `;
 
-export default PostsPage;
+export default Posts;

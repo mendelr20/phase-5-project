@@ -34,9 +34,9 @@ function AboutPage() {
             visiting TraumaTalks, and we hope you enjoy our blog! If you have
             any questions or comments, please feel free to contact us.
           </Description>
-          {/* <Button as={Link} to="/recipes">
-            See Recipe List
-          </Button> */}
+          <Button as={Link} to="/posts">
+            See All Posts
+          </Button>
         </ContentWrapper>
       </BoxShadow>
     </Wrapper>
