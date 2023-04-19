@@ -6,6 +6,7 @@ import { UserContext } from "./App";
 function PostsList() {
   const { user, posts } = React.useContext(UserContext);
 
+  
   if (!posts) {
     return <Loading>Loading posts...</Loading>;
   }
@@ -14,9 +15,11 @@ function PostsList() {
     return <NoPosts>No posts found.</NoPosts>;
   }
 
+  const userPosts = posts.filter((post) => post.user.id === user.id);
+
   return (
     <Wrapper>
-      {posts.map((post) => (
+      {userPosts.map((post) => (
         <PostCard key={post.id}>
           <ProfilePic
             src={post.user.profile_pic_url}
@@ -115,12 +118,6 @@ const CategoryList = styled.ul`
 const Category = styled.li`
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
-`;
-
-const CategoryLink = styled(Link)`
-  color: #333;
-  text-decoration: none;
-  border-radius: ;
 `;
 
 const CreatedAt = styled.span`

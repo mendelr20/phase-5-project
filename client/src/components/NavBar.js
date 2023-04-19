@@ -7,7 +7,7 @@ import { UserContext } from "./App";
 function NavBar() {
   const { user, setUser, setShowLoginForm } = useContext(UserContext);
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
 
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -28,22 +28,22 @@ function NavBar() {
 
   return (
     <Wrapper>
-  
       <Logo>
         <Link to="/">TraumaTalks</Link>
       </Logo>
       {user ? (
-  <Profile>
-    <img src={user.profile_pic_url} alt={user.username} />
-    <p>{user.first_name} {user.last_name}</p>
-  </Profile>
-) : null}
+        <Profile>
+          <img src={user.profile_pic_url} alt={user.username} />
+          <p>
+            {user.first_name} {user.last_name}
+          </p>
+        </Profile>
+      ) : null}
       <Nav>
-      
         <Button as={Link} to="/">
           Home
         </Button>
-        <Button variant="outline" as={Link} to="/about">
+        <Button as={Link} to="/about">
           About
         </Button>
         {user ? (
@@ -51,15 +51,13 @@ function NavBar() {
             <Button as={Link} to="/posts">
               Posts
             </Button>
-            {/* <Button variant="outline" as={Link} to="/recipes">
-              Recipes
+            <Button as={Link} to="/myposts">
+              My Posts
             </Button>
-            <Button as={Link} to="/new">
-              New Recipe
-            </Button> */}
-            <Button variant="outline" onClick={handleLogoutClick}>
-              Logout {user.username}
+            <Button as={Link} to="/posts/new">
+              New Post
             </Button>
+            <Button onClick={handleLogoutClick}>Logout {user.username}</Button>
           </>
         ) : (
           <Button variant="outline" onClick={handleLoginClick}>
@@ -67,7 +65,6 @@ function NavBar() {
           </Button>
         )}
       </Nav>
-      
     </Wrapper>
   );
 }
@@ -115,8 +112,5 @@ const Profile = styled.div`
     font-weight: bold;
   }
 `;
-
-
-
 
 export default NavBar;

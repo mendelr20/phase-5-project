@@ -5,7 +5,9 @@ import About from "./About";
 import HomePage from "./HomePage";
 import NavBar from "./NavBar";
 import Posts from "./Posts";
-import Post from "./PostPage"
+import MyPosts from "./MyPosts"
+import NewPost from "./NewPost"
+import EditPost from "./EditPost";
 // create a context for the user
 export const UserContext = React.createContext();
 
@@ -38,7 +40,10 @@ function App() {
           <Routes>
             <Route path='/about' element={<About/>} />
             <Route path='/posts' element={<Posts/>} />
-            <Route path='/posts/:id' element={<Post/>} />
+            <Route path='/myposts' element={<MyPosts/>}/>
+            <Route path='/posts/new' element={<NewPost/>}/>
+            <Route path='/posts/new' element={<EditPost/>}/>
+            <Route path='/posts/:postId/edit' element={<EditPost/>}/>
             <Route path='/' element={<HomePage/>} />
           </Routes>
         </main>
