@@ -1,9 +1,8 @@
-import React, { useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "./App";
 import { Error } from "../styles";
 import styled from "styled-components";
-
 
 function PostPage() {
   const { id } = useParams();
@@ -12,10 +11,70 @@ function PostPage() {
   const post = posts.find((post) => post.id === parseInt(id));
 
   const [comments, setComments] = useState(post.comments);
-  const [newComment, setNewComment] = useState("");
+
   const [errors, setErrors] = useState([]);
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [commentToEdit, setCommentToEdit] = useState(null);
+  const [newComment, setNewComment] = useState();
+  const [editMode, setEditMode] = useState(false);
+
+  function handleCommentEdit(comment) {
+    setEditMode(true);
+    setCommentToEdit(comment);
+    setNewComment(comment.body);
+  }
+
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    fetch(`/comments/${commentToEdit.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        body: newComment,
+        post_id: post.id,
+        user_id: user.id,
+      }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((data) => {
+          setPosts((prevPosts) => {
+            const updatedPosts = prevPosts.map((prevPost) => {
+              if (prevPost.id === post.id) {
+                const updatedComments = prevPost.comments.map((comment) => {
+                  if (comment.id === commentToEdit.id) {
+                    return data;
+                  } else {
+                    return comment;
+                  }
+                });
+                return {
+                  ...prevPost,
+                  comments: updatedComments,
+                };
+              } else {
+                return prevPost;
+              }
+            });
+            return updatedPosts;
+          });
+                
+          
+          setEditMode(false);
+          setNewComment("");
+          setErrors([]);
+          console.log(data);
+          setComments((prevComments) => {
+            const updatedComments = prevComments.filter(
+              (comment) => comment.id !== commentToEdit.id
+            );
+            return [...updatedComments, data];
+          });
+        });
+      }
+    });
+  };
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
@@ -72,13 +131,17 @@ function PostPage() {
           });
           return updatedPosts;
         });
-        setComments((comments) => comments.filter((comment) => comment.id !== commentId));
+        setEditMode(false);
+        setNewComment("");
+        setComments((comments) =>
+          comments.filter((comment) => comment.id !== commentId)
+        );
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
     });
   }
-  
+
   return (
     <Container>
       <Title>{post.title}</Title>
@@ -115,12 +178,15 @@ function PostPage() {
                   {user && user.id === comment.user.id && (
                     <CommentActions>
                       <CommentEditButton
-                        onClick={() => setCommentToEdit(comment)}
+                        onClick={() => handleCommentEdit(comment)}
                       >
                         Edit
                       </CommentEditButton>
-                      <CommentDeleteButton 
-                      onClick={() => deleteComment(comment.id)}>Delete</CommentDeleteButton>
+                      <CommentDeleteButton
+                        onClick={() => deleteComment(comment.id)}
+                      >
+                        Delete
+                      </CommentDeleteButton>
                     </CommentActions>
                   )}
                 </CommentMeta>
@@ -129,6 +195,19 @@ function PostPage() {
           ))
         ) : (
           <NoComments>No comments yet</NoComments>
+        )}
+        {editMode && (
+          <CommentForm onSubmit={handleEditSubmit}>
+            <CommentInput
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              placeholder="Update a comment"
+            />
+            {errors.map((err) => (
+              <Error key={err}>{err}</Error>
+            ))}
+            <CommentSubmitButton type="submit">Update</CommentSubmitButton>
+          </CommentForm>
         )}
         {!showCommentForm && (
           <WriteCommentButton onClick={() => setShowCommentForm(true)}>
