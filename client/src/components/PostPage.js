@@ -55,6 +55,30 @@ function PostPage() {
     });
   };
 
+  function deleteComment(commentId) {
+    fetch(`/comments/${commentId}`, {
+      method: "DELETE",
+    }).then((r) => {
+      if (r.ok) {
+        setPosts((posts) => {
+          const updatedPosts = posts.map((post) => {
+            const updatedComments = post.comments.filter(
+              (comment) => comment.id !== commentId
+            );
+            return {
+              ...post,
+              comments: updatedComments,
+            };
+          });
+          return updatedPosts;
+        });
+        setComments((comments) => comments.filter((comment) => comment.id !== commentId));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+  }
+  
   return (
     <Container>
       <Title>{post.title}</Title>
@@ -95,7 +119,8 @@ function PostPage() {
                       >
                         Edit
                       </CommentEditButton>
-                      <CommentDeleteButton>Delete</CommentDeleteButton>
+                      <CommentDeleteButton 
+                      onClick={() => deleteComment(comment.id)}>Delete</CommentDeleteButton>
                     </CommentActions>
                   )}
                 </CommentMeta>
@@ -137,6 +162,7 @@ const CommentsContainer = styled.div`
 
 const CommentContainer = styled.div`
   display: flex;
+  text-align: center;
   flex-direction: column;
   width: 100%;
   margin: 10px;
@@ -144,11 +170,13 @@ const CommentContainer = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   background-color: #fff;
+  align-items: center;
 `;
 
 const CommentContent = styled.p`
   font-size: 16px;
   margin-bottom: 10px;
+  align-items: center;
 `;
 
 const CommentMeta = styled.div`
@@ -156,11 +184,14 @@ const CommentMeta = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  text-align: center;
 `;
 
 const CommentAuthor = styled.span`
   font-weight: bold;
   margin-right: 10px;
+  align-items: center;
+  text-align: center;
 `;
 
 const CommentActions = styled.div`
@@ -189,6 +220,7 @@ const CommentDeleteButton = styled.button`
 
 const Container = styled.div`
   display: flex;
+  text-align: center;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
