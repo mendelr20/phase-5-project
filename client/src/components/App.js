@@ -8,6 +8,7 @@ import Posts from "./Posts";
 import MyPosts from "./MyPosts"
 import NewPost from "./NewPost"
 import EditPost from "./EditPost";
+import PostPage from "./PostPage";
 // create a context for the user
 export const UserContext = React.createContext();
 
@@ -42,7 +43,7 @@ function App() {
             <Route path='/posts' element={<Posts/>} />
             <Route path='/myposts' element={<MyPosts/>}/>
             <Route path='/posts/new' element={<NewPost/>}/>
-            <Route path='/posts/new' element={<EditPost/>}/>
+            <Route path='/posts/:id' element={<PostPage/>}/>
             <Route path='/posts/:postId/edit' element={<EditPost/>}/>
             <Route path='/' element={<HomePage/>} />
           </Routes>
@@ -54,11 +55,3 @@ function App() {
 
 export default App;
 
-// create a my posts page
-//create a my comments page
-//user page - see info and click on the post
-// see categories page which will display all post with that categories
-// create a posts page
-// crud to my posts 
-//crud to my comments
-//create categories

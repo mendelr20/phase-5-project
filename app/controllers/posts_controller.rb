@@ -13,6 +13,7 @@ class PostsController < ApplicationController
           methods: [:profile_pic_url]
         },
         comments: {
+          only: [:id, :body],
           include: {
             user: {
               only: [:id, :username, :first_name, :last_name],
@@ -24,6 +25,7 @@ class PostsController < ApplicationController
       })
     }
   end
+
   private
 
       def find_user

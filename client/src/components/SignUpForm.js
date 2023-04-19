@@ -13,7 +13,7 @@ function SignUpForm() {
   const [profilePic, setProfilePic] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { user, setUser, showLoginForm, setShowLoginForm } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
   
   const navigate = useNavigate();
   

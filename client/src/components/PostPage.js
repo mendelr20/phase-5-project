@@ -1,48 +1,58 @@
-import React, { useContext, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useContext, useState} from "react";
+import { useParams } from "react-router-dom";
 import { UserContext } from "./App";
+import { Error } from "../styles";
 import styled from "styled-components";
+
 
 function PostPage() {
   const { id } = useParams();
-  const { user, posts } = useContext(UserContext);
+  const { user, posts, setPosts } = useContext(UserContext);
 
-  // Find the post with the matching id
   const post = posts.find((post) => post.id === parseInt(id));
 
   const [comments, setComments] = useState(post.comments);
   const [newComment, setNewComment] = useState("");
-  const [userComments, setUserComments] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [showCommentForm, setShowCommentForm] = useState(false);
-  const [editingComment, setEditingComment] = useState("");
   const [commentToEdit, setCommentToEdit] = useState(null);
 
-  console.log(comments);
   const handleCommentSubmit = (e) => {
     e.preventDefault();
-    const newCommentObject = { content: newComment, user: user };
-    if (user) {
-      if (userComments.some((comment) => comment.content === newComment)) {
-        return;
+    fetch(`/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        body: newComment,
+        post_id: post.id,
+        user_id: user.id,
+      }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((data) => {
+          setPosts((prevPosts) => {
+            const updatedPosts = prevPosts.map((prevPost) => {
+              if (prevPost.id === post.id) {
+                return {
+                  ...prevPost,
+                  comments: [...prevPost.comments, data],
+                };
+              }
+              return prevPost;
+            });
+            return updatedPosts;
+          });
+          setShowCommentForm(false);
+          setNewComment("");
+          setErrors([]);
+          setComments([...comments, data]);
+        });
+      } else {
+        r.json().then((err) => setErrors(err.errors));
       }
-      setUserComments([...userComments, newCommentObject]);
-    }
-    setComments([...comments, newCommentObject]);
-    setNewComment("");
-  };
-
-  const handleEditCommentSubmit = (e) => {
-    e.preventDefault();
-    const editedCommentObject = { content: editingComment, user: user };
-    const updatedComments = comments.map((comment) => {
-      if (comment.id === commentToEdit.id) {
-        return editedCommentObject;
-      }
-      return comment;
     });
-    setComments(updatedComments);
-    setEditingComment("");
-    setCommentToEdit(null);
   };
 
   return (
@@ -63,7 +73,7 @@ function PostPage() {
       <hr />
       <CommentsContainer>
         <CommentsTitle>Comments:</CommentsTitle>
-        {comments.length > 0 ? (
+        {post.comments.length > 0 ? (
           comments.map((comment) => (
             <CommentContainer key={comment.id}>
               <Comment>
@@ -107,6 +117,9 @@ function PostPage() {
               onChange={(e) => setNewComment(e.target.value)}
               placeholder="Leave a comment"
             />
+            {errors.map((err) => (
+              <Error key={err}>{err}</Error>
+            ))}
             <CommentSubmitButton type="submit">Post</CommentSubmitButton>
           </CommentForm>
         )}
@@ -217,7 +230,7 @@ const Categories = styled.p`
   margin-bottom: 0.5rem;
 `;
 
-const Category= styled.p`
+const Category = styled.p`
   display: inline-block;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;

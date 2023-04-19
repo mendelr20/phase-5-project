@@ -2,12 +2,12 @@ import React, { useState, useContext } from "react";
 import { Button, Error, Input, FormField, Label } from "../styles";
 import { UserContext } from "./App";
 
-function LoginForm({ onLogin }) {
+function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { user, setUser, showLoginForm, setShowLoginForm } = useContext(UserContext);
+  const { setUser, setShowLoginForm } = useContext(UserContext);
   
   function handleSubmit(e) {
     e.preventDefault();

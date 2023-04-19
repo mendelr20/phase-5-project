@@ -117,12 +117,6 @@ const Category = styled.li`
   margin-bottom: 0.5rem;
 `;
 
-const CategoryLink = styled(Link)`
-  color: #333;
-  text-decoration: none;
-  border-radius: ;
-`;
-
 const CreatedAt = styled.span`
   font-size: 0.8rem;
   color: #999;
