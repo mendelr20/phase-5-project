@@ -18,23 +18,22 @@ function PostsList() {
     <Wrapper>
       {posts.map((post) => (
         <PostCard key={post.id}>
-          <Link to={`/users/${post.user.id}`}>
-            <ProfilePic src={post.user.profile_pic_url} alt={post.user.username} />
-            <Username>{post.user.username}</Username>
-          </Link>
+          <ProfilePic
+            src={post.user.profile_pic_url}
+            alt={post.user.username}
+          />
+          <Username>{post.user.username}</Username>
           <Link to={`/posts/${post.id}`}>
             <Title>{post.title}</Title>
           </Link>
           <CategoryList>
             {post.categories.map((category) => (
-              <Category key={category.id}>
-                <CategoryLink to={`/categories/${category.id}`}>
-                  #{category.name}
-                </CategoryLink>
-              </Category>
+              <Category key={category.id}>#{category.name}</Category>
             ))}
           </CategoryList>
-          <CreatedAt>{new Date(post.created_at).toLocaleDateString()}</CreatedAt>
+          <CreatedAt>
+            {new Date(post.created_at).toLocaleDateString()}
+          </CreatedAt>
           {user && user.id === post.user.id && (
             <EditLink to={`/posts/${post.id}/edit`}>Edit</EditLink>
           )}
@@ -49,6 +48,9 @@ const Wrapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1rem;
   margin-top: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: #fff;
 `;
 
 const Loading = styled.p`
@@ -67,6 +69,9 @@ const PostCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: #fff;
 `;
 
 const ProfilePic = styled.img`
@@ -107,7 +112,6 @@ const CategoryList = styled.ul`
   align-items: center;
 `;
 
-
 const Category = styled.li`
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
@@ -116,8 +120,8 @@ const Category = styled.li`
 const CategoryLink = styled(Link)`
   color: #333;
   text-decoration: none;
-  border-radius: 
-`
+  border-radius: ;
+`;
 
 const CreatedAt = styled.span`
   font-size: 0.8rem;

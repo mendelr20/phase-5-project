@@ -6,16 +6,18 @@ import styled from "styled-components";
 function PostPage() {
   const { id } = useParams();
   const { user, posts } = useContext(UserContext);
-  const [comments, setComments] = useState([]);
+
+  // Find the post with the matching id
+  const post = posts.find((post) => post.id === parseInt(id));
+
+  const [comments, setComments] = useState(post.comments);
   const [newComment, setNewComment] = useState("");
   const [userComments, setUserComments] = useState([]);
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [editingComment, setEditingComment] = useState("");
   const [commentToEdit, setCommentToEdit] = useState(null);
 
-  // Find the post with the matching id
-  const post = posts.find((post) => post.id === parseInt(id));
-
+  console.log(comments);
   const handleCommentSubmit = (e) => {
     e.preventDefault();
     const newCommentObject = { content: newComment, user: user };
@@ -42,23 +44,22 @@ function PostPage() {
     setEditingComment("");
     setCommentToEdit(null);
   };
-  
+
   return (
     <Container>
       <Title>{post.title}</Title>
-      <Content>{post.content}</Content>
-      <AuthorLink to={`/users/${post.user.id}`}>
-        <ProfilePic src={post.user.profile_pic_url} alt={post.user.username} />
-        <Username>{post.user.username}</Username>
-      </AuthorLink>
+      <Content>{post.body}</Content>
+
+      <ProfilePic src={post.user.profile_pic_url} alt={post.user.username} />
+      <Username>{post.user.username}</Username>
+
       <Categories>
         Categories:{" "}
         {post.categories.map((category) => (
-          <CategoryLink key={category.id} to={`/categories/${category.id}`}>
-            #{category.name}{" "}
-          </CategoryLink>
+          <Category key={category.id}>#{category.name} </Category>
         ))}
       </Categories>
+
       <hr />
       <CommentsContainer>
         <CommentsTitle>Comments:</CommentsTitle>
@@ -66,17 +67,26 @@ function PostPage() {
           comments.map((comment) => (
             <CommentContainer key={comment.id}>
               <Comment>
-                <CommentContent>{comment.content}</CommentContent>
+                <CommentContent>{comment.body}</CommentContent>
                 <CommentMeta>
-                  <CommentAuthor>{comment.user.username}</CommentAuthor>
+                  <ProfilePic
+                    src={post.user.profile_pic_url}
+                    alt={post.user.username}
+                  />
+                  <CommentAuthor>
+                    {comment.user.first_name} {comment.user.last_name} (@
+                    {comment.user.username})
+                  </CommentAuthor>
+
                   {user && user.id === comment.user.id && (
                     <CommentActions>
-                    <CommentEditButton onClick={() => setCommentToEdit(comment)}>
-                      Edit
-                    </CommentEditButton>
-                    <CommentDeleteButton>Delete</CommentDeleteButton>
-                  </CommentActions>
-                  
+                      <CommentEditButton
+                        onClick={() => setCommentToEdit(comment)}
+                      >
+                        Edit
+                      </CommentEditButton>
+                      <CommentDeleteButton>Delete</CommentDeleteButton>
+                    </CommentActions>
                   )}
                 </CommentMeta>
               </Comment>
@@ -105,10 +115,75 @@ function PostPage() {
   );
 }
 
+const CommentsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+`;
+
+const CommentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: #fff;
+`;
+
+const CommentContent = styled.p`
+  font-size: 16px;
+  margin-bottom: 10px;
+`;
+
+const CommentMeta = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
+const CommentAuthor = styled.span`
+  font-weight: bold;
+  margin-right: 10px;
+`;
+
+const CommentActions = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const CommentEditButton = styled.button`
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  cursor: pointer;
+`;
+
+const CommentDeleteButton = styled.button`
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: #fff;
 `;
 
 const Title = styled.h1`
@@ -117,6 +192,10 @@ const Title = styled.h1`
 
 const Content = styled.p`
   margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #333;
+  text-align: justify;
 `;
 
 const WriteCommentButton = styled.button`
@@ -133,34 +212,12 @@ const WriteCommentButton = styled.button`
   }
 `;
 
-const CommentEditButton = styled.button`
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #2980b9;
-  }
-`;
-
-
-const AuthorLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-`;
-
 const Categories = styled.p`
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 `;
 
-const CategoryLink = styled(Link)`
+const Category= styled.p`
   display: inline-block;
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
@@ -170,37 +227,14 @@ const CategoryLink = styled(Link)`
   color: #333;
   background-color: #f2f2f2;
   border-radius: 4px;
-
-  &:hover {
-    text-decoration: none;
-    background-color: #ddd;
-  }
-`;
-const CommentsContainer = styled.div`
-  width: 80%;
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 const CommentsTitle = styled.h3`
   margin: 0;
 `;
 
-const CommentContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1rem;
-`;
-
 const Comment = styled.div`
   width: 100%;
-`;
-const CommentContent = styled.div`
-  margin-bottom: 10px;
 `;
 
 const ProfilePic = styled.img`
@@ -210,28 +244,9 @@ const ProfilePic = styled.img`
   margin-right: 0.5rem;
 `;
 
-const CommentMeta = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const CommentAuthor = styled.span`
-  font-weight: bold;
-`;
-
 const Username = styled.span`
   font-size: 1.2rem;
   font-weight: bold;
-`;
-
-const CommentActions = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 5px;
-`;
-
-const CommentDeleteButton = styled.button`
-  margin-left: 10px;
 `;
 
 const NoComments = styled.p`
@@ -250,10 +265,24 @@ const CommentInput = styled.textarea`
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+  resize: vertical;
+  min-height: 80px;
 `;
 
 const CommentSubmitButton = styled.button`
   align-self: flex-end;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+
+  &:hover {
+    background-color: #2980b9;
+  }
 `;
 
 export default PostPage;

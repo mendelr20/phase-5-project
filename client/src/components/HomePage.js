@@ -10,31 +10,6 @@ function HomePage() {
 
   return (
     <Wrapper>
-      {/* <FeaturedRecipes>
-        {featuredRecipes.map((recipe) => (
-          <Recipe key={recipe.id}>
-            <Box>
-              <h2>{recipe.name}</h2>
-              <p>
-                <cite>{recipe.meal_course}</cite>
-                &nbsp;·&nbsp;
-                <em>Time to Complete: {recipe.minutes_to_complete} minutes</em>
-              </p>
-              <Button
-                as={Link}
-                className="see-more"
-                to={`/recipes/${recipe.id}`}
-              >
-                See More
-              </Button>
-            </Box>
-          </Recipe>
-        ))}
-      </FeaturedRecipes> */}
-      {/* <SeeAllRecipesButton as={Link} to="/recipes">
-        See All Recipes
-      
-      </SeeAllRecipesButton> */}
       {showLoginForm && <Login setShowLoginModal={setShowLoginForm} />}
       <ContactInformation>
         <h5>
