@@ -53,6 +53,17 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find_by(id: session[:user_id])
+    post = Post.find(params[:id])
+    if post.user == @user
+      post.destroy
+      head :no_content
+    else
+      render json: { error: 'Unauthorized' }, status: :unauthorized
+    end
+  end
+
   private
 
   def post_params
