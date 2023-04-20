@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { UserContext } from "./App";
-import { Error } from "../styles";
+import { Error, Button } from "../styles";
 import styled from "styled-components";
 
 function PostPage() {
   const { id } = useParams();
   const { user, posts, setPosts } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const post = posts.find((post) => post.id === parseInt(id));
 
@@ -17,6 +18,10 @@ function PostPage() {
   const [commentToEdit, setCommentToEdit] = useState(null);
   const [newComment, setNewComment] = useState();
   const [editMode, setEditMode] = useState(false);
+
+  const handleEditClick = () => {
+    navigate(`/posts/${post.id}/edit`);
+  };
 
   function handleCommentEdit(comment) {
     setEditMode(true);
@@ -59,8 +64,7 @@ function PostPage() {
             });
             return updatedPosts;
           });
-                
-          
+
           setEditMode(false);
           setNewComment("");
           setErrors([]);
@@ -150,12 +154,23 @@ function PostPage() {
       <ProfilePic src={post.user.profile_pic_url} alt={post.user.username} />
       <Username>{post.user.username}</Username>
 
-      <Categories>
-        Categories:{" "}
-        {post.categories.map((category) => (
-          <Category key={category.id}>#{category.name} </Category>
-        ))}
-      </Categories>
+      {post.categories.length > 0 ? (
+        <Categories>
+          Categories:{" "}
+          {post.categories.map((category) => (
+            <Category key={category.id}>#{category.name} </Category>
+          ))}
+        </Categories>
+      ) : (
+        <p>
+          This post has not been associated with any categories yet.
+          {post.user.id === user.id && (
+            <p>
+              Click the edit button down below to add categories to this post
+            </p>
+          )}
+        </p>
+      )}
 
       <hr />
       <CommentsContainer>
@@ -209,6 +224,10 @@ function PostPage() {
             <CommentSubmitButton type="submit">Update</CommentSubmitButton>
           </CommentForm>
         )}
+        {post.user.id === user.id && (
+          <Button onClick={handleEditClick}>Edit</Button>
+        )}
+
         {!showCommentForm && (
           <WriteCommentButton onClick={() => setShowCommentForm(true)}>
             Write a comment
@@ -330,6 +349,7 @@ const WriteCommentButton = styled.button`
   padding: 8px 16px;
   font-size: 16px;
   cursor: pointer;
+  margin: 10px;
 
   &:hover {
     background-color: #27ae60;

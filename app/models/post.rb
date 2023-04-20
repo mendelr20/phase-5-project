@@ -5,8 +5,8 @@ class Post < ApplicationRecord
     has_many :category_posts, dependent: :destroy
     has_many :categories, through: :category_posts
     
-  
-    validates :title, presence: true
+    
+    validates :title, presence: true, length: { maximum: 100 }
     validates :body, presence: true, length: { minimum: 25 }
 end
 

@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Button } from "../styles";
 import { UserContext } from "./App";
 import Login from "./Login";
 
 function HomePage() {
-  const { user, setUser, showLoginForm, setShowLoginForm } = useContext(UserContext);
+  const { showLoginForm, setShowLoginForm } = useContext(UserContext);
 
   return (
     <Wrapper>
@@ -57,59 +56,6 @@ const ContactInformation = styled.div`
         text-decoration: underline;
       }
     }
-  }
-`;
-
-const Title = styled.h1`
-  font-size: 64px;
-  font-weight: bold;
-  color: #663399;
-  text-align: center;
-  margin-bottom: 48px;
-`;
-
-const FeaturedRecipes = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
-
-const Recipe = styled.article`
-  margin-right: 24px;
-  margin-bottom: 24px;
-  width: calc(33.33% - 8px);
-
-  &:nth-child(3n) {
-    margin-right: 0;
-  }
-
-  h2 {
-    font-size: 32px;
-    margin-bottom: 8px;
-    text-align: center;
-    color: #663399;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-  }
-
-  p {
-    margin-bottom: 16px;
-    font-size: 16px;
-    text-align: center;
-    color: #666;
-  }
-`;
-
-const SeeAllRecipesButton = styled(Button)`
-  margin-top: 48px;
-  background-color: #663399;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 16px 32px;
-
-  &:hover {
-    background-color: #512b8b;
   }
 `;
 

@@ -27,5 +27,6 @@ class SessionsController < ApplicationController
         render json: { errors: ["Not authorized"] }, status: :unprocessable_entity
       end
     end
+    
   end
   

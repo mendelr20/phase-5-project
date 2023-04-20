@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button } from "../styles";
+import { UserContext } from "./App";
 
 function AboutPage() {
+  const { user, setShowLogin } = useContext(UserContext);
   return (
     <Wrapper>
       <BoxShadow>
@@ -34,9 +36,15 @@ function AboutPage() {
             visiting TraumaTalks, and we hope you enjoy our blog! If you have
             any questions or comments, please feel free to contact us.
           </Description>
-          <Button as={Link} to="/posts">
-            See All Posts
-          </Button>
+          {user ? (
+            <Button as={Link} to="/posts">
+              See All Posts
+            </Button>
+          ) : (
+            <Button as={Link} to="/" onClick={() => setShowLogin(true)}>
+              Log in to see all posts
+            </Button>
+          )}
         </ContentWrapper>
       </BoxShadow>
     </Wrapper>

@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import { Button } from "../styles";
+import { UserContext } from "./App";
 
 function Login({ onLogin }) {
-  const [showLogin, setShowLogin] = useState(true);
+  const { showLogin, setShowLogin } = useContext(UserContext);
 
   return (
     <Wrapper>
@@ -37,13 +38,6 @@ function Login({ onLogin }) {
     </Wrapper>
   );
 }
-
-const Logo = styled.h1`
-  font-family: "Permanent Marker", cursive;
-  font-size: 3rem;
-  color: #663399;
-  margin: 8px 0 16px;
-`;
 
 const Wrapper = styled.section`
   display: flex;
