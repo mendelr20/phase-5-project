@@ -1,2 +1,4 @@
 class CategoryPostsController < ApplicationController
+
 end
+  

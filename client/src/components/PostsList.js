@@ -7,10 +7,6 @@ function PostsList() {
   const { user, posts } = React.useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredPosts = posts.filter((post) =>
-    post.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   if (!posts) {
     return <Loading>Loading posts...</Loading>;
   }
@@ -18,6 +14,11 @@ function PostsList() {
   if (posts.length === 0) {
     return <NoPosts>No posts found.</NoPosts>;
   }
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);

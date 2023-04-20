@@ -7,21 +7,42 @@ import { UserContext } from "./App";
 const EditPost = () => {
   const { postId } = useParams();
   const navigate = useNavigate();
-  const { user, setPosts, posts } = useContext(UserContext);
-  const post = posts.find((post) => post.id === parseInt(postId));
+  const { user, setPosts, posts, categories, setCategories } =
+    useContext(UserContext);
+
+  const post =
+    posts.length > 0
+      ? posts.find((post) => post.id === parseInt(postId))
+      : null;
   const [title, setTitle] = useState(post ? post.title : "");
   const [body, setBody] = useState(post ? post.body : "");
-  const [errors, setErrors] = useState([]);
 
+  const [errors, setErrors] = useState([]);
+  const [postCategories, setPostCategories] = useState(
+    post ? post.categories.map((category) => category.id) : []
+  );
+
+  console.log(postCategories);
+  const handleCategoryChange = (categoryId, checked) => {
+    setPostCategories((postCategories) => {
+      if (checked) {
+        return [...postCategories, categoryId];
+      } else {
+        return postCategories.filter((id) => id !== categoryId);
+      }
+    });
+  };
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
+  console.log(postCategories);
 
   const handleBodyChange = (e) => {
     setBody(e.target.value);
   };
+
   const id = parseInt(postId);
-  console.log(id);
+
   const handlePostSubmit = (e) => {
     e.preventDefault();
 
@@ -29,10 +50,11 @@ const EditPost = () => {
       title: title,
       body: body,
       user_id: user.id,
+      category_ids: postCategories,
     };
 
-    fetch("/posts", {
-      method: "POST",
+    fetch(`/posts/${id}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
@@ -43,15 +65,18 @@ const EditPost = () => {
           return response.json();
         } else {
           response.json().then((err) => setErrors(err.errors));
-          throw new Error("Network response was not ok.");
         }
       })
-      .then((post) => {
-        setTitle("");
-        setBody("");
-        posts.push(post.post);
+      .then((editedPost) => {
+        console.log(editedPost.post);
+        setPosts(posts =>
+          posts.map(p => (p.id === editedPost.post.id ? editedPost.post : p))
+        );
+
         navigate("/myposts");
+        console.log(posts)
       })
+      
       .catch((err) => {
         // handle error
         console.log(err);
@@ -78,47 +103,73 @@ const EditPost = () => {
         console.log(err);
       });
   };
-
   return (
     <Wrapper>
-      <Title>Edit The Post</Title>
-      <form onSubmit={handlePostSubmit}>
-        <FieldWrapper>
-          <Label htmlFor="title">Title</Label>
-          <Input
-            type="text"
-            id="title"
-            placeholder="Please enter the title for your post"
-            name="title"
-            value={title}
-            onChange={handleTitleChange}
-            required
-          />
-        </FieldWrapper>
-        <FieldWrapper>
-          <Label htmlFor="body">Body</Label>
-          <Input
-            as="textarea"
-            id="body"
-            name="body"
-            placeholder="Please enter the body for your post"
-            value={body}
-            onChange={handleBodyChange}
-            required
-          />
-        </FieldWrapper>
-        {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))}
-        <ButtonsWrapper>
-          <Button type="submit">Submit</Button>
-          <DeleteButtonWrapper>
-            <DeleteButton type="button" onClick={handleDeletePost}>
-              Delete Post
-            </DeleteButton>
-          </DeleteButtonWrapper>
-        </ButtonsWrapper>
-      </form>
+      {posts ? (
+        <>
+          <Title>Edit The Post</Title>
+          <form onSubmit={handlePostSubmit}>
+            <FieldWrapper>
+              <Label htmlFor="title">Title</Label>
+              <Input
+                type="text"
+                id="title"
+                placeholder="Please enter the title for your post"
+                name="title"
+                value={title}
+                onChange={handleTitleChange}
+                required
+              />
+            </FieldWrapper>
+            <FieldWrapper>
+              <Label htmlFor="body">Body</Label>
+              <Input
+                as="textarea"
+                id="body"
+                name="body"
+                placeholder="Please enter the body for your post"
+                value={body}
+                onChange={handleBodyChange}
+                required
+              />
+            </FieldWrapper>
+            <FieldWrapper>
+              <Label htmlFor="categories">Categories</Label>
+              {categories.map((category) => (
+                <CheckboxWrapper key={category.id}>
+                  <input
+                    type="checkbox"
+                    id={category.id}
+                    name="categories"
+                    value={category.id}
+                    checked={postCategories.includes(category.id)}
+                    onChange={(e) => {
+                      const categoryId = parseInt(e.target.value);
+                      const checked = e.target.checked;
+                      handleCategoryChange(categoryId, checked);
+                    }}
+                  />
+                  <label htmlFor={category.id}>{category.name}</label>
+                </CheckboxWrapper>
+              ))}
+            </FieldWrapper>
+
+            {errors.map((err) => (
+              <Error key={err}>{err}</Error>
+            ))}
+            <ButtonsWrapper>
+              <Button type="submit">Submit</Button>
+              <DeleteButtonWrapper>
+                <DeleteButton type="button" onClick={handleDeletePost}>
+                  Delete Post
+                </DeleteButton>
+              </DeleteButtonWrapper>
+            </ButtonsWrapper>
+          </form>
+        </>
+      ) : (
+        <Loading>Loading post...</Loading>
+      )}
     </Wrapper>
   );
 };
@@ -126,6 +177,32 @@ const EditPost = () => {
 const Wrapper = styled(Box)`
   max-width: 600px;
   margin: 0 auto;
+`;
+const CheckboxWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+
+  label {
+    display: block;
+    margin-right: 16px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+`;
+
+const Loading = styled.p`
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-align: center;
+  color: #333;
 `;
 
 const ButtonsWrapper = styled.div`
