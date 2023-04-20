@@ -69,14 +69,14 @@ const EditPost = () => {
       })
       .then((editedPost) => {
         console.log(editedPost.post);
-        setPosts(posts =>
-          posts.map(p => (p.id === editedPost.post.id ? editedPost.post : p))
+        setPosts((posts) =>
+          posts.map((p) => (p.id === editedPost.post.id ? editedPost.post : p))
         );
 
         navigate("/myposts");
-        console.log(posts)
+        console.log(posts);
       })
-      
+
       .catch((err) => {
         // handle error
         console.log(err);
@@ -159,6 +159,14 @@ const EditPost = () => {
             ))}
             <ButtonsWrapper>
               <Button type="submit">Submit</Button>
+              <ButtonsWrapper>
+                <GoBackButton
+                  type="button"
+                  onClick={() => navigate(`/posts/${id}`)}
+                >
+                  Go To The Post
+                </GoBackButton>
+              </ButtonsWrapper>
               <DeleteButtonWrapper>
                 <DeleteButton type="button" onClick={handleDeletePost}>
                   Delete Post
@@ -194,6 +202,21 @@ const CheckboxWrapper = styled.div`
   input[type="checkbox"] {
     margin-right: 8px;
     margin-bottom: 8px;
+  }
+`;
+
+const GoBackButton = styled.button`
+  background-color: #ccc;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px;
+  margin-right: 10px;
+
+  &:hover {
+    background-color: #999;
   }
 `;
 
