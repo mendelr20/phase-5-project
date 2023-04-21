@@ -28,8 +28,14 @@ class PostsController < ApplicationController
   def create
     @user = User.find_by(id: session[:user_id])
     post = Post.new(post_params)
-
+    category_ids = params[:post][:category_ids].map(&:to_i)
+    categories = Category.where(id: category_ids)
+    post_params[:categories] = categories
     if post.save
+      new_categories = category_ids - post.category_ids
+      post.category_posts.create(category: categories) if new_categories.any?
+
+      
       render json: {
         post: post.as_json(include: {
           user: {
@@ -65,6 +71,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @user = User.find_by(id: session[:user_id])
     post = Post.find(params[:id])
     category_ids = params[:post][:category_ids].map(&:to_i)
     categories = Category.where(id: category_ids)

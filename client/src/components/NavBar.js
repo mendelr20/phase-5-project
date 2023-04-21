@@ -13,6 +13,7 @@ function NavBar() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
+        navigate('/')
       }
     });
   }
