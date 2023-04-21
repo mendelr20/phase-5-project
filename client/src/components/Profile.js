@@ -1,29 +1,29 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { UserContext } from "./App";
+import { UserContext } from "./UserContext";
 
 function Profile() {
-    const { user, posts } = useContext(UserContext);
-    const { username } = useParams();
-  
-    const filteredPosts = posts.filter((post) => post.user.username === username);
-  
-    return (
-      <Container>
-        <ProfilePic src={user.profile_pic_url} alt={user.username} />
-        <Username>{user.username}</Username>
-        <PostsList>
-          {filteredPosts.map((post) => (
-            <PostItem key={post.id}>
-              <PostLink href={`/posts/${post.id}`}>{post.title}</PostLink>
-            </PostItem>
-          ))}
-        </PostsList>
-      </Container>
-    );
-  }
-  
+  const { user, posts } = useContext(UserContext);
+  const { username } = useParams();
+
+  const filteredPosts = posts.filter((post) => post.user.username === username);
+
+  return (
+    <Container>
+      <ProfilePic src={user.profile_pic_url} alt={user.username} />
+      <Username>{user.username}</Username>
+      <PostsList>
+        {filteredPosts.map((post) => (
+          <PostItem key={post.id}>
+            <PostLink href={`/posts/${post.id}`}>{post.title}</PostLink>
+          </PostItem>
+        ))}
+      </PostsList>
+    </Container>
+  );
+}
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;

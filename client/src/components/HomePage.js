@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { UserContext } from "./App";
+import { UserContext } from "./UserContext";
+
 import Login from "./Login";
 
 function HomePage() {
@@ -25,7 +26,6 @@ function HomePage() {
     </Wrapper>
   );
 }
-
 
 const Wrapper = styled.section`
   max-width: 800px;

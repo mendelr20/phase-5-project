@@ -1,7 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Button, Error, Input, FormField, Label } from "../styles";
-import { UserContext } from "./App";
+import { UserContext } from "./UserContext";
+
 import { useNavigate } from "react-router-dom";
+
+import styled from "styled-components";
 
 function SignUpForm() {
   const [username, setUsername] = useState("");
@@ -13,47 +16,45 @@ function SignUpForm() {
   const [profilePic, setProfilePic] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { setUser } = useContext(UserContext);
-  
+  const { setUser, setShowLoginForm } = useContext(UserContext);
+
   const navigate = useNavigate();
-  
+
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-  
+
     const formData = new FormData();
-    formData.append('username', username);
-    formData.append('password', password);
-    formData.append('password_confirmation', passwordConfirmation);
-    formData.append('first_name', firstName);
-    formData.append('last_name', lastName);
-    formData.append('email', email);
-    formData.append('profile_pic', profilePic);
-   
-  
+    formData.append("username", username);
+    formData.append("password", password);
+    formData.append("password_confirmation", passwordConfirmation);
+    formData.append("first_name", firstName);
+    formData.append("last_name", lastName);
+    formData.append("email", email);
+    formData.append("profile_pic", profilePic);
+
     fetch("/signup", {
       method: "POST",
       headers: {
-        "Accept": "application/json"
+        Accept: "application/json",
       },
-      body: formData
-    })
-      .then((r) => {
-        setIsLoading(false);
-        if (r.ok) {
-          r.json().then((user) => {
-            setUser(user);
-            // Redirect to the home page
-            navigate("/posts");
-          });
-        } else {
-          r.json().then((err) => setErrors(err.errors));
-        }
-      });
+      body: formData,
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((user) => {
+          setUser(user);
+          setShowLoginForm(false);
+          // Redirect to the home page
+          navigate("/");
+        });
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
   }
-  
-  console.log(username)
+
   function handleProfilePicChange(e) {
     setProfilePic(e.target.files[0]);
   }
@@ -71,6 +72,11 @@ function SignUpForm() {
         />
       </FormField>
       <FormField>
+        <PasswordRequirement>
+          Password must contain at least one uppercase letter, one lowercase
+          letter, one digit, and one special character.
+        </PasswordRequirement>
+
         <Label htmlFor="password">Password</Label>
         <Input
           type="password"
@@ -122,11 +128,7 @@ function SignUpForm() {
       </FormField>
       <FormField>
         <Label htmlFor="profilePic">Profile Picture</Label>
-        <Input
-          type="file"
-          id="profilePic"
-          onChange={handleProfilePicChange}
-        />
+        <Input type="file" id="profilePic" onChange={handleProfilePicChange} />
       </FormField>
       <FormField>
         <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
@@ -140,4 +142,9 @@ function SignUpForm() {
   );
 }
 
+const PasswordRequirement = styled.div`
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #999;
+`;
 export default SignUpForm;

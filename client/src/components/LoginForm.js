@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Button, Error, Input, FormField, Label } from "../styles";
-import { UserContext } from "./App";
+import { UserContext } from "./UserContext";
 
 function LoginForm() {
   const [username, setUsername] = useState("");
@@ -8,7 +8,7 @@ function LoginForm() {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { setUser, setShowLoginForm } = useContext(UserContext);
-  
+
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -30,7 +30,7 @@ function LoginForm() {
       }
     });
   }
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <FormField>

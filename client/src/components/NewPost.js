@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button, Input, Label, Error } from "../styles";
-import { UserContext } from "./App";
+import { UserContext } from "./UserContext";
 
 const NewPost = () => {
   const navigate = useNavigate();
-  const { user, setPosts, posts, categories } = useContext(UserContext);
+  const { user, posts } = useContext(UserContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [errors, setErrors] = useState([]);
@@ -18,7 +18,7 @@ const NewPost = () => {
   const handleBodyChange = (e) => {
     setBody(e.target.value);
   };
- 
+
   const handlePostSubmit = (e) => {
     e.preventDefault();
 

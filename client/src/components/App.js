@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 import About from "./About";
 import HomePage from "./HomePage";
@@ -10,7 +11,6 @@ import NewPost from "./NewPost";
 import EditPost from "./EditPost";
 import PostPage from "./PostPage";
 // create a context for the user
-export const UserContext = React.createContext();
 
 function App() {
   const [user, setUser] = useState(null);
@@ -18,13 +18,14 @@ function App() {
   const [posts, setPosts] = useState();
   const [categories, setCategories] = useState();
   const [showLogin, setShowLogin] = useState(true);
+
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => {
-          setUser(user)
-          setShowLoginForm(false)
+          setUser(user);
+          setShowLoginForm(false);
         });
       }
     });
@@ -37,8 +38,7 @@ function App() {
       .then((categories) => {
         // Do something with the categories, such as rendering them in the DOM
         setCategories(categories);
-      })
-
+      });
   }, []);
 
   // if (!user) return <Login onLogin={setUser} />;

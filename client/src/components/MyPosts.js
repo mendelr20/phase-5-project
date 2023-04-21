@@ -10,7 +10,7 @@ function MyPosts() {
         <Title> My Posts</Title>
         <ContentWrapper>
           <Description>
-            <MyPostsList/>
+            <MyPostsList />
           </Description>
         </ContentWrapper>
       </BoxShadow>

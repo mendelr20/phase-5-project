@@ -1,30 +1,26 @@
 import React, { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles";
-import { UserContext } from "./App";
+import { UserContext } from "./UserContext";
 
 function NavBar() {
   const { user, setUser, setShowLoginForm } = useContext(UserContext);
   const navigate = useNavigate();
-  const location = useLocation();
 
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
-        setShowLoginForm(true)
-        navigate('/')
+        setShowLoginForm(true);
+        navigate("/");
       }
     });
   }
 
   function handleLoginClick() {
-    if (location.pathname === "/about") {
-      setShowLoginForm(true);
-    } else {
-      setShowLoginForm((prevState) => !prevState);
-    }
+    setShowLoginForm(true);
+
     navigate("/");
   }
 
@@ -64,15 +60,12 @@ function NavBar() {
         )}
         {!user && (
           <>
-            <Button onClick={handleLoginClick}>
-              Login
-            </Button>
+            <Button onClick={handleLoginClick}>Login</Button>
           </>
         )}
       </Nav>
     </Wrapper>
   );
-  
 }
 const Wrapper = styled.header`
   display: flex;

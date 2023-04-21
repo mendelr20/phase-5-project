@@ -3,7 +3,7 @@ import styled from "styled-components";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
 import { Button } from "../styles";
-import { UserContext } from "./App";
+import { UserContext } from "./UserContext";
 
 function Login({ onLogin }) {
   const { showLogin, setShowLogin } = useContext(UserContext);

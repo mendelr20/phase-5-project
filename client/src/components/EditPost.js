@@ -2,14 +2,13 @@ import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button, Input, Label, Error } from "../styles";
-import { UserContext } from "./App";
+import { UserContext } from "./UserContext";
 
 const EditPost = () => {
   const { postId } = useParams();
   const navigate = useNavigate();
 
-  const { user, setPosts, posts, categories,  } =
-    useContext(UserContext);
+  const { user, setPosts, posts, categories } = useContext(UserContext);
 
   const post =
     posts.length > 0
@@ -80,8 +79,6 @@ const EditPost = () => {
         console.log(err);
       });
   };
-
-  
 
   const handleDeletePost = (e) => {
     e.preventDefault();
@@ -203,27 +200,6 @@ const CheckboxWrapper = styled.div`
   input[type="checkbox"] {
     margin-right: 8px;
     margin-bottom: 8px;
-  }
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 16px;
-
-  button {
-    background-color: #4caf50;
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
   }
 `;
 

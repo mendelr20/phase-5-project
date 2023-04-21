@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { UserContext } from "./App";
+import { UserContext } from "./UserContext";
+
 import { Error, Button } from "../styles";
 import styled from "styled-components";
 

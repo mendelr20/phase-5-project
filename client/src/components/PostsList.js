@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { UserContext } from "./App";
+import { UserContext } from "./UserContext";
 
 function PostsList() {
   const { user, posts } = React.useContext(UserContext);
@@ -17,8 +17,6 @@ function PostsList() {
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-  
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
