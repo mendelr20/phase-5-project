@@ -81,4 +81,4 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['postgres://my_database_glob_user:WetTQNvp66vsoDfhC1vxxkZqViYHBqsT@dpg-ch0vu03h4hstbhgnusg0-a.oregon-postgres.render.com/app_db'] %>
