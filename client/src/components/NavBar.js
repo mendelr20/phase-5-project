@@ -48,7 +48,7 @@ function NavBar() {
         <Button as={Link} to="/about">
           About
         </Button>
-        {user ? (
+        {user && (
           <>
             <Button as={Link} to="/posts">
               Posts
@@ -61,14 +61,18 @@ function NavBar() {
             </Button>
             <Button onClick={handleLogoutClick}>Logout {user.username}</Button>
           </>
-        ) : (
-          <Button onClick={handleLoginClick}>
-            Login
-          </Button>
+        )}
+        {!user && (
+          <>
+            <Button onClick={handleLoginClick}>
+              Login
+            </Button>
+          </>
         )}
       </Nav>
     </Wrapper>
   );
+  
 }
 const Wrapper = styled.header`
   display: flex;

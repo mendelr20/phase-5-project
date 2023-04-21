@@ -26,20 +26,23 @@ function App() {
       }
     });
 
-    fetch("/posts")
-      .then((r) => r.json())
-      .then((r) => setPosts(r.posts));
+    // Only fetch posts and categories if the user is authenticated
+    if (user) {
+      fetch("/posts")
+        .then((r) => r.json())
+        .then((r) => setPosts(r.posts));
 
-    fetch("/categories")
-      .then((response) => response.json())
-      .then((categories) => {
-        // Do something with the categories, such as rendering them in the DOM
-        setCategories(categories);
-      })
-      .catch((error) => {
-        // Handle any errors that occurred during the request
-        console.error(error);
-      });
+      fetch("/categories")
+        .then((response) => response.json())
+        .then((categories) => {
+          // Do something with the categories, such as rendering them in the DOM
+          setCategories(categories);
+        })
+        .catch((error) => {
+          // Handle any errors that occurred during the request
+          console.error(error);
+        });
+    }
   }, []);
 
   // if (!user) return <Login onLogin={setUser} />;
