@@ -60,7 +60,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-     @user = User.find_by(id: session[:user_id])
+    @user = User.find_by(id: session[:user_id])
     post = Post.find(params[:id])
     if post.user == @user
       post.destroy

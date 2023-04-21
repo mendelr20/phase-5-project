@@ -14,10 +14,10 @@ export const UserContext = React.createContext();
 
 function App() {
   const [user, setUser] = useState(null);
-  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(!user);
   const [posts, setPosts] = useState();
   const [categories, setCategories] = useState();
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {

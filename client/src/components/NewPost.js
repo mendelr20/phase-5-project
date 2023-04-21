@@ -19,7 +19,7 @@ const NewPost = () => {
   const handleBodyChange = (e) => {
     setBody(e.target.value);
   };
- const handleCategoryChange = (categoryId, checked) => {
+  const handleCategoryChange = (categoryId, checked) => {
     setPostCategories((postCategories) => {
       if (checked) {
         return [...postCategories, categoryId];
@@ -45,26 +45,24 @@ const NewPost = () => {
       },
       body: JSON.stringify({ post: post }),
     })
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
           response.json().then((err) => setErrors(err.errors));
-          throw new Error('Network response was not ok.');
+          throw new Error("Network response was not ok.");
         }
       })
-      .then(post => {
+      .then((post) => {
         setTitle("");
         setBody("");
         posts.push(post.post);
-        navigate('/myposts');
+        navigate("/myposts");
       })
       .catch((err) => {
         // handle error
         console.log(err);
       });
-    
-    
   };
 
   return (
@@ -96,8 +94,9 @@ const NewPost = () => {
           />
         </FieldWrapper>
         <FieldWrapper>
-              <Label htmlFor="categories">Categories</Label>
-              {categories.map((category) => (
+          <Label htmlFor="categories">Categories</Label>
+          {categories.length
+            ? categories.map((category) => (
                 <CheckboxWrapper key={category.id}>
                   <input
                     type="checkbox"
@@ -113,8 +112,9 @@ const NewPost = () => {
                   />
                   <label htmlFor={category.id}>{category.name}</label>
                 </CheckboxWrapper>
-              ))}
-            </FieldWrapper>
+              ))
+            : null}
+        </FieldWrapper>
         {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))}

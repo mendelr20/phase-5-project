@@ -13,6 +13,7 @@ function NavBar() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
+        setShowLoginForm(true)
         navigate('/')
       }
     });
@@ -30,7 +31,7 @@ function NavBar() {
   return (
     <Wrapper>
       <Logo>
-        <Link to="/">TraumaTalks</Link>
+        <Link to="/">Trauma Talks</Link>
       </Logo>
       {user ? (
         <Profile>
@@ -61,7 +62,7 @@ function NavBar() {
             <Button onClick={handleLogoutClick}>Logout {user.username}</Button>
           </>
         ) : (
-          <Button variant="outline" onClick={handleLoginClick}>
+          <Button onClick={handleLoginClick}>
             Login
           </Button>
         )}

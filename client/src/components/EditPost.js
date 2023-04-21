@@ -22,7 +22,6 @@ const EditPost = () => {
     post ? post.categories.map((category) => category.id) : []
   );
 
-  console.log(postCategories);
   const handleCategoryChange = (categoryId, checked) => {
     setPostCategories((postCategories) => {
       if (checked) {
@@ -68,7 +67,6 @@ const EditPost = () => {
         }
       })
       .then((editedPost) => {
-        console.log(editedPost.post);
         setPosts((posts) =>
           posts.map((p) => (p.id === editedPost.post.id ? editedPost.post : p))
         );
@@ -135,23 +133,25 @@ const EditPost = () => {
             </FieldWrapper>
             <FieldWrapper>
               <Label htmlFor="categories">Categories</Label>
-              {categories.map((category) => (
-                <CheckboxWrapper key={category.id}>
-                  <input
-                    type="checkbox"
-                    id={category.id}
-                    name="categories"
-                    value={category.id}
-                    checked={postCategories.includes(category.id)}
-                    onChange={(e) => {
-                      const categoryId = parseInt(e.target.value);
-                      const checked = e.target.checked;
-                      handleCategoryChange(categoryId, checked);
-                    }}
-                  />
-                  <label htmlFor={category.id}>{category.name}</label>
-                </CheckboxWrapper>
-              ))}
+              {categories.length
+                ? categories.map((category) => (
+                    <CheckboxWrapper key={category.id}>
+                      <input
+                        type="checkbox"
+                        id={category.id}
+                        name="categories"
+                        value={category.id}
+                        checked={postCategories.includes(category.id)}
+                        onChange={(e) => {
+                          const categoryId = parseInt(e.target.value);
+                          const checked = e.target.checked;
+                          handleCategoryChange(categoryId, checked);
+                        }}
+                      />
+                      <label htmlFor={category.id}>{category.name}</label>
+                    </CheckboxWrapper>
+                  ))
+                : null}
             </FieldWrapper>
 
             {errors.map((err) => (
