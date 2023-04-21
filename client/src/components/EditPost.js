@@ -7,7 +7,8 @@ import { UserContext } from "./App";
 const EditPost = () => {
   const { postId } = useParams();
   const navigate = useNavigate();
-  const { user, setPosts, posts, categories, setCategories } =
+
+  const { user, setPosts, posts, categories,  } =
     useContext(UserContext);
 
   const post =
@@ -34,7 +35,6 @@ const EditPost = () => {
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
-  console.log(postCategories);
 
   const handleBodyChange = (e) => {
     setBody(e.target.value);
@@ -80,6 +80,8 @@ const EditPost = () => {
         console.log(err);
       });
   };
+
+  
 
   const handleDeletePost = (e) => {
     e.preventDefault();
@@ -153,7 +155,6 @@ const EditPost = () => {
                   ))
                 : null}
             </FieldWrapper>
-
             {errors.map((err) => (
               <Error key={err}>{err}</Error>
             ))}
@@ -202,6 +203,27 @@ const CheckboxWrapper = styled.div`
   input[type="checkbox"] {
     margin-right: 8px;
     margin-bottom: 8px;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+
+  button {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
   }
 `;
 

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
-
+  skip_before_action :authorize, only: [:index]
   def index
     posts = Post.all
 

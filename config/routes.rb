@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :category_posts
-  resources :categories
+  resources :categories, only: [:index, :create]
   resources :comments
   resources :posts
   resources :users, only: [:index, :create, :show]

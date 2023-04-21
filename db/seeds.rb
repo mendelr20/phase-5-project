@@ -27,6 +27,16 @@ categories = []
     name: Faker::Lorem.unique.word.capitalize
   )
 end
+Category.create(name: 'Medical')
+Category.create(name: "EMS")
+Category.create(name: 'EMT')
+Category.create(name: "Paramedic")
+Category.create(name: 'Ambulance')
+Category.create(name: "Hopital")
+Category.create(name: 'Emergency')
+Category.create(name: "Nurse")
+Category.create(name: "911")
+Category.create(name: "NYC911")
 puts "✅ Categories created!\n"
 
 # Create 50 posts with random data, and assign them to random users and categories

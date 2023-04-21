@@ -24,7 +24,16 @@ function PostsList() {
   const filteredPosts = userPosts.filter((post) =>
     post.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  if (userPosts.length === 0) {
+    return (
+      <>
+        <NoPosts>No posts found.</NoPosts>
+        <Link to="/posts/new">
+          <CreatePostButton>Create a Post</CreatePostButton>
+        </Link>
+      </>
+    );
+  }
   return (
     <div>
       <SearchBarWrapper>
@@ -73,7 +82,15 @@ const Wrapper = styled.div`
   border-radius: 8px;
   background-color: #fff;
 `;
-
+const CreatePostButton = styled.button`
+  display: block;
+  margin: 2rem auto;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #0077cc;
+  color: #fff;
+`;
 const SearchBarWrapper = styled.div`
   display: flex;
   align-items: center;

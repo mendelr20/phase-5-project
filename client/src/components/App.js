@@ -38,10 +38,7 @@ function App() {
         // Do something with the categories, such as rendering them in the DOM
         setCategories(categories);
       })
-      .catch((error) => {
-        // Handle any errors that occurred during the request
-        console.error(error);
-      });
+
   }, []);
 
   // if (!user) return <Login onLogin={setUser} />;
