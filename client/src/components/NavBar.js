@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles";
-import { UserContext } from "./UserContext";
+import  {UserContext}  from "./UserContext";
 
 function NavBar() {
   const { user, setUser, setShowLoginForm } = useContext(UserContext);
