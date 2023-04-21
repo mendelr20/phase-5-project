@@ -11,7 +11,6 @@ const NewPost = () => {
   const [body, setBody] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const [postCategories, setPostCategories] = useState([]);
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
@@ -19,15 +18,7 @@ const NewPost = () => {
   const handleBodyChange = (e) => {
     setBody(e.target.value);
   };
-  const handleCategoryChange = (categoryId, checked) => {
-    setPostCategories((postCategories) => {
-      if (checked) {
-        return [...postCategories, categoryId];
-      } else {
-        return postCategories.filter((id) => id !== categoryId);
-      }
-    });
-  };
+ 
   const handlePostSubmit = (e) => {
     e.preventDefault();
 
@@ -35,7 +26,6 @@ const NewPost = () => {
       title: title,
       body: body,
       user_id: user.id,
-      category_ids: postCategories,
     };
 
     fetch("/posts", {
@@ -93,28 +83,6 @@ const NewPost = () => {
             required
           />
         </FieldWrapper>
-        <FieldWrapper>
-          <Label htmlFor="categories">Categories</Label>
-          {categories.length
-            ? categories.map((category) => (
-                <CheckboxWrapper key={category.id}>
-                  <input
-                    type="checkbox"
-                    id={category.id}
-                    name="categories"
-                    value={category.id}
-                    checked={postCategories.includes(category.id)}
-                    onChange={(e) => {
-                      const categoryId = parseInt(e.target.value);
-                      const checked = e.target.checked;
-                      handleCategoryChange(categoryId, checked);
-                    }}
-                  />
-                  <label htmlFor={category.id}>{category.name}</label>
-                </CheckboxWrapper>
-              ))
-            : null}
-        </FieldWrapper>
         {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))}
@@ -124,24 +92,6 @@ const NewPost = () => {
   );
 };
 
-const CheckboxWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-
-  label {
-    display: block;
-    margin-right: 16px;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
-  }
-
-  input[type="checkbox"] {
-    margin-right: 8px;
-    margin-bottom: 8px;
-  }
-`;
 const Wrapper = styled(Box)`
   max-width: 600px;
   margin: 0 auto;

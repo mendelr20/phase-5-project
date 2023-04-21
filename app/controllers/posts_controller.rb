@@ -26,38 +26,33 @@ class PostsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(id: session[:user_id])
-    post = Post.new(post_params)
-    category_ids = params[:post][:category_ids].map(&:to_i)
-    categories = Category.where(id: category_ids)
-    post_params[:categories] = categories
-    if post.save
-      new_categories = category_ids - post.category_ids
-      post.category_posts.create(category: categories) if new_categories.any?
+      post = Post.new(post_params)
 
-      
-      render json: {
-        post: post.as_json(include: {
-          user: {
-            only: [:id, :username, :first_name, :last_name],
-            methods: [:profile_pic_url]
-          },
-          comments: {
-            only: [:id, :body],
-            include: {
-              user: {
-                only: [:id, :username, :first_name, :last_name],
-                methods: [:profile_pic_url]
-              }
+      if post.save
+        render json: {
+      post: post.as_json(include: {
+        user: {
+          only: [:id, :username, :first_name, :last_name],
+          methods: [:profile_pic_url]
+        },
+        comments: {
+          only: [:id, :body],
+          include: {
+            user: {
+              only: [:id, :username, :first_name, :last_name],
+              methods: [:profile_pic_url]
             }
-          },
-          categories: { only: [:id, :name] }
-        })
-      }, status: :created
-    else
-      render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
+          }
+        },
+        categories: { only: [:id, :name] }
+      })
+    }
+      else
+        render json:  { errors: post.errors.full_messages }, status: :unprocessable_entity
+      end
     end
-  end
+
+
 
   def destroy
     @user = User.find_by(id: session[:user_id])
