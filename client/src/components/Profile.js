@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import  {UserContext}  from "./UserContext";
-//test
+
 function Profile() {
   const { user, posts } = useContext(UserContext);
   const { username } = useParams();
