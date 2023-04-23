@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-
+import { UserContext } from "./UserContext";
 import About from "./About";
 import HomePage from "./HomePage";
 import NavBar from "./NavBar";
@@ -9,8 +9,6 @@ import MyPosts from "./MyPosts";
 import NewPost from "./NewPost";
 import EditPost from "./EditPost";
 import PostPage from "./PostPage";
-// create a context for the user
-export const UserContext = React.createContext();
 
 function App() {
   const [user, setUser] = useState(null);
@@ -40,7 +38,7 @@ function App() {
       })
 
   }, []);
-
+console.log(posts)
   // if (!user) return <Login onLogin={setUser} />;
 
   return (
