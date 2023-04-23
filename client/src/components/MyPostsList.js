@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import  {UserContext}  from "./UserContext";
-
+import { UserContext } from "./UserContextProvider";
 function PostsList() {
-  const { user, posts } = React.useContext(UserContext);
+  const { user, posts } = useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (event) => {

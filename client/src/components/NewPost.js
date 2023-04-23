@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button, Input, Label, Error } from "../styles";
-import  {UserContext}  from "./UserContext";
+import { UserContext } from "./UserContextProvider";
 
 const NewPost = () => {
   const navigate = useNavigate();

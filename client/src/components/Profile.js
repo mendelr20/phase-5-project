@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import  {UserContext}  from "./UserContext";
+import { UserContext } from "./UserContextProvider";
 
 function Profile() {
   const { user, posts } = useContext(UserContext);
