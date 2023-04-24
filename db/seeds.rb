@@ -14,29 +14,22 @@ puts "👥 Creating users..."
       last_name: Faker::Name.last_name,
     )
     user.profile_pic.attach(io: downloaded_image, filename: 'avatar.png')
-    # (io: File.open('/Users/mendelrosenblum/Development/Code/Projects/phase-5-project/Dr.jpeg'), filename: 'Dr.jpeg')
-    
 end
 puts "✅ Users created!\n"
 
-# Create 5 categories
-puts "📚 Creating categories..."
+# Create an array of categories
 categories = []
-5.times do
-  categories << Category.create!(
-    name: Faker::Lorem.unique.word.capitalize
-  )
-end
-Category.create(name: 'Medical')
-Category.create(name: "EMS")
-Category.create(name: 'EMT')
-Category.create(name: "Paramedic")
-Category.create(name: 'Ambulance')
-Category.create(name: "Hopital")
-Category.create(name: 'Emergency')
-Category.create(name: "Nurse")
-Category.create(name: "911")
-Category.create(name: "NYC911")
+puts "📚 Creating categories..."
+categories << Category.create(name: 'Medical')
+categories << Category.create(name: "EMS")
+categories << Category.create(name: 'EMT')
+categories << Category.create(name: "Paramedic")
+categories << Category.create(name: 'Ambulance')
+categories << Category.create(name: "Hopital")
+categories << Category.create(name: 'Emergency')
+categories << Category.create(name: "Nurse")
+categories << Category.create(name: "911")
+categories << Category.create(name: "NYC911")
 puts "✅ Categories created!\n"
 
 # Create 50 posts with random data, and assign them to random users and categories

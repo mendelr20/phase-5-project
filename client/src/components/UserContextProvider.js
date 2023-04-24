@@ -6,7 +6,7 @@ export function UserContextProvider(props) {
   const [showLoginForm, setShowLoginForm] = useState(true);
   const [posts, setPosts] = useState(null);
   const [categories, setCategories] = useState(null);
-
+  const [showLogin, setShowLogin] = useState(true);
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
@@ -38,6 +38,8 @@ export function UserContextProvider(props) {
     setPosts,
     categories,
     setCategories,
+    showLogin,
+    setShowLogin,
   };
 
   return (
