@@ -25,6 +25,7 @@ function PostPage() {
   const handleNewClick = () => {
     setShowCommentForm(true)
     setEditMode(false);
+    setNewComment('')
   }
 
   function handleCommentEdit(comment) {
