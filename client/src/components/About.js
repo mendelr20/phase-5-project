@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Box, Button } from "../styles";
-import { UserContext } from "./UserContextProvider";
 
+import { Button } from "../styles";
+import { UserContext } from "./UserContextProvider";
+import "../css/about.css";
 function AboutPage() {
   const { user, setShowLogin } = useContext(UserContext);
   return (
-    <Wrapper>
-      <BoxShadow>
-        <Title>TraumaTalks</Title>
-        <ContentWrapper>
-          <Description>
+    <div class="wrapper">
+      <div class="box-shadow">
+        <h1 class="title">TraumaTalks</h1>
+        <div class="content-wrapper">
+          <p class="description">
             Welcome to TraumaTalks, a medical blog primarily focused on
             emergency medicine. Our goal is to provide readers with valuable
             information and insights related to trauma care and emergency
@@ -35,7 +35,7 @@ function AboutPage() {
             knowledgeable and effective medical professionals. Thank you for
             visiting TraumaTalks, and we hope you enjoy our blog! If you have
             any questions or comments, please feel free to contact us.
-          </Description>
+          </p>
           {user ? (
             <Button as={Link} to="/posts">
               See All Posts
@@ -45,47 +45,10 @@ function AboutPage() {
               Log in to see all posts
             </Button>
           )}
-        </ContentWrapper>
-      </BoxShadow>
-    </Wrapper>
+        </div>
+      </div>
+    </div>
   );
 }
 
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  background-color: #ebebeb;
-`;
-
-const BoxShadow = styled(Box)`
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  margin-top: 40px;
-  background-color: #fff;
-`;
-
-const Title = styled.h1`
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  text-align: center;
-  color: #0077c2;
-`;
-
-const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
-`;
-
-const Description = styled.p`
-  margin-top: 1.5rem;
-  font-size: 1.2rem;
-  line-height: 1.6;
-  text-align: center;
-  color: #333;
-`;
-
 export default AboutPage;
-//test

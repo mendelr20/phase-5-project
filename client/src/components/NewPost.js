@@ -56,54 +56,70 @@ const NewPost = () => {
   };
 
   return (
-    <Wrapper>
+    <BigWrapper>
       <Title>Create A Post</Title>
-      <form onSubmit={handlePostSubmit}>
-        <FieldWrapper>
-          <Label htmlFor="title">Title</Label>
-          <Input
-            type="text"
-            id="title"
-            placeholder="Please enter the title for your post"
-            name="title"
-            value={title}
-            onChange={handleTitleChange}
-            required
-          />
-        </FieldWrapper>
-        <FieldWrapper>
-          <Label htmlFor="body">Body</Label>
-          <Input
-            as="textarea"
-            id="body"
-            name="body"
-            placeholder="Please enter the body for your post"
-            value={body}
-            onChange={handleBodyChange}
-            required
-          />
-        </FieldWrapper>
-        {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))}
-        <Button type="submit">Submit</Button>
-      </form>
-    </Wrapper>
+      <Wrapper>
+        <form onSubmit={handlePostSubmit}>
+          <FieldWrapper>
+            <Label htmlFor="title">Title</Label>
+            <Input
+              type="text"
+              id="title"
+              placeholder="Please enter the title for your post"
+              name="title"
+              value={title}
+              onChange={handleTitleChange}
+              required
+            />
+          </FieldWrapper>
+          <FieldWrapper>
+            <Label htmlFor="body">Body</Label>
+            <Input
+              as="textarea"
+              id="body"
+              name="body"
+              placeholder="Please enter the body for your post"
+              value={body}
+              onChange={handleBodyChange}
+              required
+            />
+          </FieldWrapper>
+          {errors.map((err) => (
+            <Error key={err}>{err}</Error>
+          ))}
+          <Button type="submit">Submit</Button>
+        </form>
+      </Wrapper>
+    </BigWrapper>
   );
 };
 
-const Wrapper = styled(Box)`
-  max-width: 600px;
-  margin: 0 auto;
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1rem;
+  margin-top: 2rem;
+  
+  border-radius: 8px;
+  padding: 1rem;
+`;
+
+const BigWrapper = styled(Wrapper)`
+  background-color: #fff;
 `;
 
 const Title = styled.h1`
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin: 2rem 0;
 `;
 
 const FieldWrapper = styled(Box)`
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `;
+
+
 
 export default NewPost;

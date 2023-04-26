@@ -1,0 +1,49 @@
+/* About Page */
+/* Wrapper */
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  /* Box Shadow */
+  .box-shadow {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    width: 80%;
+  }
+  
+  /* Title */
+  .title {
+    color: #333;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Content Wrapper */
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Description */
+  .description {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: justify;
+    padding: 0 20px;
+  }
+  
+
+  

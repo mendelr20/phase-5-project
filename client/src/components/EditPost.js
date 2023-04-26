@@ -63,6 +63,7 @@ const EditPost = () => {
           return response.json();
         } else {
           response.json().then((err) => setErrors(err.errors));
+          throw new Error("Network response was not ok.");
         }
       })
       .then((editedPost) => {
@@ -158,17 +159,17 @@ const EditPost = () => {
             <ButtonsWrapper>
               <Button type="submit">Submit</Button>
               <ButtonsWrapper>
-                <GoBackButton
+                <Button
                   type="button"
                   onClick={() => navigate(`/posts/${id}`)}
                 >
                   Go To The Post
-                </GoBackButton>
+                </Button>
               </ButtonsWrapper>
               <DeleteButtonWrapper>
-                <DeleteButton type="button" onClick={handleDeletePost}>
+                <Button type="button" onClick={handleDeletePost}>
                   Delete Post
-                </DeleteButton>
+                </Button>
               </DeleteButtonWrapper>
             </ButtonsWrapper>
           </form>
@@ -183,6 +184,8 @@ const EditPost = () => {
 const Wrapper = styled(Box)`
   max-width: 600px;
   margin: 0 auto;
+  color: #333;
+  background-color: #fff;
 `;
 const CheckboxWrapper = styled.div`
   display: flex;

@@ -14,29 +14,32 @@ function Login({ onLogin }) {
           <>
             <LoginForm onLogin={onLogin} />
             <Divider />
-            <p>
+            <LoginMessage>
               Don't have an account? &nbsp;
               <Button color="secondary" onClick={() => setShowLogin(false)}>
                 Sign Up
               </Button>
-            </p>
+            </LoginMessage>
           </>
         ) : (
           <>
             <SignUpForm onLogin={onLogin} />
             <Divider />
-            <p>
+            <LoginMessage>
               Already have an account? &nbsp;
-              <Button color="secondary" onClick={() => setShowLogin(true)}>
+              <Button  onClick={() => setShowLogin(true)}>
                 Log In
               </Button>
-            </p>
+            </LoginMessage>
           </>
         )}
       </ContentWrapper>
     </Wrapper>
   );
 }
+const LoginMessage = styled.h4`
+color: #333;
+`;
 
 const Wrapper = styled.section`
   display: flex;
@@ -48,6 +51,7 @@ const ContentWrapper = styled.div`
   margin: 0 auto;
   padding: 16px;
   text-align: center;
+  background-color: #fff;
 `;
 
 const Divider = styled.hr`

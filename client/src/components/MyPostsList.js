@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContextProvider";
+import { Button } from "../styles";
 function PostsList() {
   const { user, posts } = useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState("");
@@ -28,13 +29,14 @@ function PostsList() {
       <>
         <NoPosts>No posts found.</NoPosts>
         <Link to="/posts/new">
-          <CreatePostButton>Create a Post</CreatePostButton>
+          <Button>Create a Post</Button>
         </Link>
       </>
     );
   }
   return (
     <div>
+      <PostTitle> My Posts</PostTitle>
       <SearchBarWrapper>
         <SearchBar
           type="text"
@@ -63,7 +65,7 @@ function PostsList() {
               Posted on: {new Date(post.created_at).toLocaleDateString()}
             </CreatedAt>
             {user && user.id === post.user.id && (
-              <EditLink to={`/posts/${post.id}/edit`}>Edit</EditLink>
+              <Button as={Link}to={`/posts/${post.id}/edit`}>Edit</Button>
             )}
           </PostCard>
         ))}
@@ -79,17 +81,17 @@ const Wrapper = styled.div`
   margin-top: 2rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  background-color: #fff;
 `;
-const CreatePostButton = styled.button`
-  display: block;
-  margin: 2rem auto;
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
-  border-radius: 0.5rem;
-  background-color: #0077cc;
-  color: #fff;
+
+const PostTitle = styled.h1`
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+  margin-bottom: 10px;
+  margin-top: 10px;
 `;
+
 const SearchBarWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -144,11 +146,15 @@ const ProfilePic = styled.img`
   height: 40px;
   border-radius: 50%;
   margin-right: 0.5rem;
+  margin: auto;
 `;
 
 const Username = styled.span`
   font-size: 1.2rem;
   font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin: 0 auto;
 `;
 
 const NoPosts = styled.p`
@@ -160,10 +166,12 @@ const NoPosts = styled.p`
 `;
 
 const Title = styled.h2`
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  color: #0077c2;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+  margin-bottom: 10px;
+  margin-top: 10px;
 `;
 
 const CategoryList = styled.ul`
@@ -178,28 +186,21 @@ const CategoryList = styled.ul`
 `;
 
 const Category = styled.li`
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
+  background-color: tan;
+  color: #fff;
+  padding: 5px 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  font-size: 14px;
 `;
 
 const CreatedAt = styled.span`
   font-size: 0.8rem;
   color: #999;
-`;
-
-const EditLink = styled(Link)`
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  color: #fff;
-  background-color: #0077c2;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background-color 0.3s ease-in-out;
-
-  &:hover {
-    background-color: #005fa3;
-  }
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 1rem;
 `;
 
 export default PostsList;

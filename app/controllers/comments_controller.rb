@@ -26,6 +26,7 @@ class CommentsController < ApplicationController
         render json: { errors: comment.errors.full_messages }, status: :unprocessable_entity
       end
     end
+    
 
     def destroy
     comment = Comment.find(params[:id])

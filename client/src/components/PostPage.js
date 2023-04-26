@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContextProvider";
-
 import { Error, Button } from "../styles";
 import styled from "styled-components";
 
@@ -23,8 +22,13 @@ function PostPage() {
   const handleEditClick = () => {
     navigate(`/posts/${post.id}/edit`);
   };
+  const handleNewClick = () => {
+    setShowCommentForm(true)
+    setEditMode(false);
+  }
 
   function handleCommentEdit(comment) {
+    setShowCommentForm(false)
     setEditMode(true);
     setCommentToEdit(comment);
     setNewComment(comment.body);
@@ -77,6 +81,8 @@ function PostPage() {
             return [...updatedComments, data];
           });
         });
+      } else {
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   };
@@ -156,12 +162,12 @@ function PostPage() {
       <Username>{post.user.username}</Username>
 
       {post.categories.length > 0 ? (
-        <Categories>
+        <CategoryList>
           Categories:{" "}
           {post.categories.map((category) => (
             <Category key={category.id}>#{category.name} </Category>
           ))}
-        </Categories>
+        </CategoryList>
       ) : (
         <p>
           This post has not been associated with any categories yet.
@@ -183,26 +189,21 @@ function PostPage() {
                 <CommentContent>{comment.body}</CommentContent>
                 <CommentMeta>
                   <ProfilePic
-                    src={post.user.profile_pic_url}
+                    src={comment.user.profile_pic_url}
                     alt={post.user.username}
                   />
                   <CommentAuthor>
                     {comment.user.first_name} {comment.user.last_name} (@
                     {comment.user.username})
                   </CommentAuthor>
-
                   {user && user.id === comment.user.id && (
                     <CommentActions>
-                      <CommentEditButton
-                        onClick={() => handleCommentEdit(comment)}
-                      >
+                      <Button onClick={() => handleCommentEdit(comment)}>
                         Edit
-                      </CommentEditButton>
-                      <CommentDeleteButton
-                        onClick={() => deleteComment(comment.id)}
-                      >
+                      </Button>
+                      <Button onClick={() => deleteComment(comment.id)}>
                         Delete
-                      </CommentDeleteButton>
+                      </Button>
                     </CommentActions>
                   )}
                 </CommentMeta>
@@ -222,17 +223,19 @@ function PostPage() {
             {errors.map((err) => (
               <Error key={err}>{err}</Error>
             ))}
-            <CommentSubmitButton type="submit">Update</CommentSubmitButton>
+            <Button type="submit">Update The Comment</Button>
           </CommentForm>
         )}
         {post.user.id === user.id && (
-          <Button onClick={handleEditClick}>Edit</Button>
+          <Button onClick={handleEditClick}>Edit This Post</Button>
         )}
 
         {!showCommentForm && (
-          <WriteCommentButton onClick={() => setShowCommentForm(true)}>
-            Write a comment
-          </WriteCommentButton>
+          <ButtonBorder>
+            <Button onClick={handleNewClick}>
+              Write a comment
+            </Button>
+          </ButtonBorder>
         )}
         {showCommentForm && (
           <CommentForm onSubmit={handleCommentSubmit}>
@@ -244,13 +247,25 @@ function PostPage() {
             {errors.map((err) => (
               <Error key={err}>{err}</Error>
             ))}
-            <CommentSubmitButton type="submit">Post</CommentSubmitButton>
+            <Button type="submit">Post</Button>
           </CommentForm>
         )}
       </CommentsContainer>
     </Container>
   );
 }
+
+const Title = styled.h2`
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+  margin-bottom: 10px;
+  margin-top: 10px;
+`;
+const ButtonBorder = styled.div`
+  margin-top: 20px;
+`;
 
 const CommentsContainer = styled.div`
   display: flex;
@@ -276,13 +291,13 @@ const CommentContent = styled.p`
   font-size: 16px;
   margin-bottom: 10px;
   align-items: center;
+  color: #333;
 `;
 
 const CommentMeta = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   text-align: center;
 `;
 
@@ -291,32 +306,13 @@ const CommentAuthor = styled.span`
   margin-right: 10px;
   align-items: center;
   text-align: center;
+  color: #333;
 `;
 
 const CommentActions = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
-
-const CommentEditButton = styled.button`
-  background-color: #0077cc;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
-  margin-right: 10px;
-  cursor: pointer;
-`;
-
-const CommentDeleteButton = styled.button`
-  background-color: #ff0000;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
-  cursor: pointer;
-`;
-
 const Container = styled.div`
   display: flex;
   text-align: center;
@@ -328,10 +324,7 @@ const Container = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   background-color: #fff;
-`;
-
-const Title = styled.h1`
-  margin-top: 0;
+  overflow: auto;
 `;
 
 const Content = styled.p`
@@ -340,38 +333,6 @@ const Content = styled.p`
   line-height: 1.5;
   color: #333;
   text-align: justify;
-`;
-
-const WriteCommentButton = styled.button`
-  background-color: #2ecc71;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  margin: 10px;
-
-  &:hover {
-    background-color: #27ae60;
-  }
-`;
-
-const Categories = styled.p`
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-`;
-
-const Category = styled.p`
-  display: inline-block;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: #333;
-  background-color: #f2f2f2;
-  border-radius: 4px;
 `;
 
 const CommentsTitle = styled.h3`
@@ -387,11 +348,35 @@ const ProfilePic = styled.img`
   height: 40px;
   border-radius: 50%;
   margin-right: 0.5rem;
+  padding: 5px;
 `;
 
 const Username = styled.span`
   font-size: 1.2rem;
   font-weight: bold;
+  color: #333;
+  padding: 5px;
+`;
+
+const CategoryList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-top: 0.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Category = styled.li`
+  background-color: tan;
+  color: #fff;
+  padding: 10px 15px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  font-size: 14px;
 `;
 
 const NoComments = styled.p`
@@ -412,22 +397,6 @@ const CommentInput = styled.textarea`
   border-radius: 5px;
   resize: vertical;
   min-height: 80px;
-`;
-
-const CommentSubmitButton = styled.button`
-  align-self: flex-end;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
-
-  &:hover {
-    background-color: #2980b9;
-  }
 `;
 
 export default PostPage;

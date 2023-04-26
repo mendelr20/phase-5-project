@@ -1,0 +1,26 @@
+/* Global styles */
+body {
+  background-image: url("./pexels-fwstudio-129731.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; 
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+/* Container styles */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+
+.navbar {
+  height: 50px;
+  padding: 20px 20px;
+}
+
+
+

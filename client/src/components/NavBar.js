@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { Button } from "../styles";
 import { UserContext } from "./UserContextProvider";
-
+import "../css/navbar.css";
 
 function NavBar() {
   const { user, setUser, setShowLoginForm } = useContext(UserContext);
@@ -21,96 +19,38 @@ function NavBar() {
 
   function handleLoginClick() {
     setShowLoginForm(true);
-
     navigate("/");
   }
 
   return (
-    <Wrapper>
-      <Logo>
-        <Link to="/">Trauma Talks</Link>
-      </Logo>
-      {user ? (
-        <Profile>
-          <img src={user.profile_pic_url} alt={user.username} />
-          <p>
-            {user.first_name} {user.last_name}
-          </p>
-        </Profile>
-      ) : null}
-      <Nav>
-        <Button as={Link} to="/">
-          Home
-        </Button>
-        <Button as={Link} to="/about">
-          About
-        </Button>
+    <header className="navbar">
+      <h1 className="logo">
+        <Link to="/">TraumaTalks</Link>
+      </h1>
+      <nav className="nav">
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
         {user && (
           <>
-            <Button as={Link} to="/posts">
-              Posts
-            </Button>
-            <Button as={Link} to="/myposts">
-              My Posts
-            </Button>
-            <Button as={Link} to="/posts/new">
-              New Post
-            </Button>
-            <Button onClick={handleLogoutClick}>Logout {user.username}</Button>
+            <Link to="/posts">Posts</Link>
+            <Link to="/myposts">My Posts</Link>
+            <Link to="/posts/new">New Post</Link>
+            <div className="profile">
+              <button onClick={handleLogoutClick}>
+                Logout {user.username}
+              </button>
+              <img src={user.profile_pic_url} alt={user.username} />
+            </div>
           </>
         )}
         {!user && (
           <>
-            <Button onClick={handleLoginClick}>Login</Button>
+            <button onClick={handleLoginClick}>Login</button>
           </>
         )}
-      </Nav>
-    </Wrapper>
+      </nav>
+    </header>
   );
 }
-const Wrapper = styled.header`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 8px;
-`;
-
-const Logo = styled.h1`
-  font-family: "Permanent Marker", cursive;
-  font-size: 3rem;
-  color: #663399;
-  margin: 0;
-  line-height: 1;
-  flex-grow: 1;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  gap: 4px;
-  margin-top: 16px;
-`;
-
-const Profile = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 0;
-
-  img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 5px;
-  }
-
-  p {
-    font-size: 1rem;
-    font-weight: bold;
-  }
-`;
 
 export default NavBar;
