@@ -65,8 +65,22 @@ puts "📝 Creating posts..."
     body: "Paramedics play a crucial role in emergency medicine. They are often the first healthcare providers to arrive at the scene of an emergency, and their quick response and expert medical care can mean the difference between life and death. Paramedics are trained to provide advanced life support to patients in emergency situations. They are skilled in managing cardiac arrests, trauma, and other life-threatening conditions. They also have the ability to administer medications, interpret electrocardiograms, and perform other medical procedures in the field. In addition to their medical skills, paramedics also have strong communication and interpersonal skills. They must be able to effectively communicate with patients, their families, and other healthcare providers in high-pressure situations. They must also be able to make quick decisions and adapt to rapidly changing conditions. The importance of paramedics in emergency medicine cannot be overstated. They are often the first line of defense in emergency situations, and their quick response and expert care can save lives. If you ever find yourself in an emergency situation, rest assured that paramedics are there to help you.",
     user_id: User.pluck(:id).sample
   )
-  p1.categories << c2 << c6 << c3
+  p4.categories << c2 << c6 << c3
 
+  p5 = Post.create!(
+    title: "The Life-Saving Role of Paramedics in Emergency Medicine",
+    body: "Emergency medicine is a critical field of medicine that deals with the diagnosis and treatment of medical conditions that require immediate attention. The emergency room (ER) is the primary location for emergency medicine, and it plays a vital role in saving lives and preventing long-term health problems. The ER is staffed by a team of medical professionals who are trained to quickly assess and diagnose patients in critical condition. These professionals include emergency physicians, nurses, and technicians, among others. They work together to provide urgent care to patients with a wide range of medical conditions, from heart attacks and strokes to severe injuries and infections. In addition to providing medical care, the ER also serves as a safety net for patients who may not have access to regular medical care. Patients who are uninsured or underinsured can seek care at the ER, regardless of their ability to pay. This makes the ER an essential part of the healthcare system, as it ensures that everyone has access to emergency medical care when they need it most. Despite its importance, the ER is often overcrowded and understaffed, which can lead to long wait times and delayed care for patients. To address this issue, healthcare providers and policymakers need to invest in emergency medicine and increase the resources available to the ER. In conclusion, emergency medicine and the ER play a vital role in our healthcare system. They provide urgent care to patients with critical medical conditions and serve as a safety net for those who may not have access to regular medical care. To ensure that everyone has access to emergency medical care, we need to invest in emergency medicine and increase the resources available to the ER.",
+    user_id: User.pluck(:id).sample
+  )
+  p5.categories << c1 << c3 << c5
+
+
+  p6 = Post.create!(
+    title: "The Importance of Communication Skills in Paramedicine",
+    body: "Paramedics play a crucial role in emergency medicine. They are often the first healthcare providers to arrive at the scene of an emergency, and their quick response and expert medical care can mean the difference between life and death. Paramedics are trained to provide advanced life support to patients in emergency situations. They are skilled in managing cardiac arrests, trauma, and other life-threatening conditions. They also have the ability to administer medications, interpret electrocardiograms, and perform other medical procedures in the field. In addition to their medical skills, paramedics also have strong communication and interpersonal skills. They must be able to effectively communicate with patients, their families, and other healthcare providers in high-pressure situations. They must also be able to make quick decisions and adapt to rapidly changing conditions. The importance of paramedics in emergency medicine cannot be overstated. They are often the first line of defense in emergency situations, and their quick response and expert care can save lives. If you ever find yourself in an emergency situation, rest assured that paramedics are there to help you.",
+    user_id: User.pluck(:id).sample
+  )
+  p6.categories << c3 << c4 << c5
 
 puts "✅ Posts created!"
 
@@ -132,5 +146,36 @@ puts "📝 Creating comments..."
       post_id: p4.id,
       user_id: User.pluck(:id).sample,
     )
+    Comment.create!(
+      body: "I can't stress enough how important emergency medicine and the ER are. As someone who has had to use the ER multiple times, I am grateful for the care I received. However, I do agree that more resources need to be allocated to the ER to improve wait times and ensure that patients receive timely care.",
+      post_id: p5.id,
+      user_id: User.pluck(:id).sample,
+    )
+    Comment.create!(
+      body:"I have worked in emergency medicine for over a decade, and I can attest to the incredible work that ER staff do every day. It's a challenging and fast-paced environment, but it's also incredibly rewarding to know that you are helping people in their time of need.",
+      post_id: p5.id,
+      user_id: User.pluck(:id).sample,
+    )
+    Comment.create!(
+      body: "Emergency medicine is truly a critical field, and we need to do more to support it. I think it's important to educate the public on when it's appropriate to go to the ER versus urgent care or a primary care doctor. This could help alleviate some of the overcrowding in the ER and ensure that patients receive the appropriate level of care.",
+      post_id: p5.id,
+      user_id: User.pluck(:id).sample,
+    )
+    Comment.create!(
+      body: "As someone who has had to call 911 in an emergency, I can attest to the incredible work that paramedics do. They were so skilled and professional, and I am so grateful for their care.",
+      post_id: p6.id,
+      user_id: User.pluck(:id).sample,
+    )
+    Comment.create!(
+      body: "I have a lot of respect for paramedics. They are truly heroes who put their lives on the line to save others. Thank you for all that you do!",
+      post_id: p6.id,
+      user_id: User.pluck(:id).sample,
+    )
+    Comment.create!(
+      body: "I recently had a health scare and had to be taken to the hospital by paramedics. They were so compassionate and reassuring during a really scary time. I don't know what I would have done without them.",
+      post_id: p6.id,
+      user_id: User.pluck(:id).sample,
+    )
+
 
 puts "✅ Comments created!"
