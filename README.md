@@ -1,9 +1,26 @@
 # About This Project
 ## Description
-I am excited to introduce my phase 4 web application, Recipe Ranger! Recipe Ranger is a Ruby on Rails web application that allows users to browse and filter through a comprehensive list of recipes, create and delete their own recipe reviews, and update their reviews. The application allows users to create an account, log in, and search for recipes based on meal course, sort by name (A-Z or Z-A), and sort by time to complete (up or down). Users can also search for recipes by title and view recipe details, including instructions, notes, meal course, and cooking time.
+Trauma Talks is a medical blog focused on emergency medicine. The application allows users to create an account, login, and create posts about emergency medicine. Users can assign their posts to categories, making it easy to navigate through the content. Additionally, users can edit, update, and delete their own posts.
 
-Recipe Ranger showcases a comprehensive list of all the recipes in the system, and provides a button that allows users to create a new recipe review. With Recipe Ranger, users can easily keep track of their favorite recipes and share their thoughts with others. The application also allows users to edit or delete reviews they have previously submitted.
+In addition to the post management functionality, the application includes user authentication and authorization. Users can access the features of the application only after logging in. The application also allows users to create, update, and delete reviews for any post.
+
 <br />
+
+## Features
+User authentication and authorization
+Create, update, and delete posts
+Assign posts to categories
+Create, update, and delete reviews for any post
+
+<br />
+
+## Built With
+This project was built with the following:
+- [React](https://reactjs.org/): Frontend development
+- [Ruby on Rails](https://rubyonrails.org/): Backend development
+- [PostgreSQL] (https://www.postgresql.org/): Database management
+- [Render] (https://render.com/): Hosting platform
+- [Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.html/)
 
 ## Contributors
 **Mendel Rosenblum**
@@ -15,14 +32,6 @@ Recipe Ranger showcases a comprehensive list of all the recipes in the system, a
 [Medium](https://medium.com/@mendelrosenblum)
 <br />
 Email: RosenblumMM@gmail.com
-
-
-## Built With
-This project was built with the following:
-- [React](https://reactjs.org/)
-- [Ruby on Rails](https://rubyonrails.org/)
-- [Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.html/)
-
   
 ## Installation
 To install, fork and clone this repository. Once you've cloned this repository in your terminal, cd into the correct folder.
