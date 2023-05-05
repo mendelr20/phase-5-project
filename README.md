@@ -8,7 +8,7 @@ Recipe Ranger showcases a comprehensive list of all the recipes in the system, a
 ## Contributors
 **Mendel Rosenblum**
 <br />
-[Github] [mendelr20](https://github.com/mendelr20)
+[Github](https://github.com/mendelr20)
 <br />
 [Linkedin](https://www.linkedin.com/in/mendelrosenblum/)
 <br />
