@@ -10,8 +10,11 @@ Recipe Ranger showcases a comprehensive list of all the recipes in the system, a
 <br />
 Github: [mendelr20](https://github.com/mendelr20)
 <br />
-Linkdeln: [mendelrosenblum](https://www.linkedin.com/in/mendelrosenblum/)
+Linkedin: [mendelrosenblum](https://www.linkedin.com/in/mendelrosenblum/)
 <br />
+Medium: [mendelrosenblum](https://medium.com/@mendelrosenblum)
+<br />
+
 
 email: RosenblumMM@gmail.com
 
