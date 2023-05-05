@@ -18,8 +18,8 @@ Create, update, and delete reviews for any post
 This project was built with the following:
 - [React](https://reactjs.org/): Frontend development
 - [Ruby on Rails](https://rubyonrails.org/): Backend development
-- [PostgreSQL] (https://www.postgresql.org/): Database management
-- [Render] (https://render.com/): Hosting platform
+- [PostgreSQL](https://www.postgresql.org/): Database management
+- [Render](https://render.com/): Hosting platform
 - [Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.html/)
 
 ## Contributors
