@@ -14,7 +14,7 @@ Recipe Ranger showcases a comprehensive list of all the recipes in the system, a
 <br />
 [Medium](https://medium.com/@mendelrosenblum)
 <br />
-Email RosenblumMM@gmail.com
+[Email] (RosenblumMM@gmail.com)
 
 
 ## Built With
